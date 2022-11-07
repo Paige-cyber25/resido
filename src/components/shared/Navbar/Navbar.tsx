@@ -24,7 +24,7 @@ const Navbar = () => {
               <li>Contact Us</li>
             </Link>
           </ul>
-          <Link to='/get-started'>
+          <Link to='/pricing'>
           <Button
             type="filled"
             bgColor="light_blue"

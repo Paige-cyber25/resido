@@ -7,8 +7,8 @@ import styles from "./Contact.module.scss";
 const Contact = () => {
   return (
     <div>
-      <div className={`bg-light_grey w-full h-full`}>
-        <h2 className="text-dark_grey font-semibold text-3xl mx-auto pt-20 text-center">
+      <div className={`bg-light_grey w-full lg:h-[35rem]`}>
+        <h2 className="text-dark_grey font-semibold text-3xl mx-auto lg:pt-[10rem] text-center ">
           Contact us
         </h2>
         <p className="text-dark_grey font-light text-base mx-auto pt-10 pb-10 text-center">
@@ -29,12 +29,12 @@ const Contact = () => {
               hello@resido.com
             </span>
           </div>
-          <div className={`flex flex-row items-center gap-4 mb-20`}>
+          <a href='https://wa.me/2349043284663' rel="noreferrer" className={`flex flex-row items-center gap-4 mb-20`} target='_blank'>
             <img src={whatsappIcon} alt="whatsapp" />
             <span className="text-dark_blue font-normal text-base">
               Whatsapp
             </span>
-          </div>
+          </a>
         </div>
       </div>
     </div>

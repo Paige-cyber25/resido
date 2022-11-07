@@ -3,6 +3,11 @@ import { CarouselProvider, Slider, Slide, Dot } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import styles from "./Carousel.module.scss";
 import generatorServiceIcon from "../../../assets/generator.svg";
+import electricalIcon from '../../../assets/electrical.png';
+import plumbingIcon from '../../../assets/plumbing.png';
+import swimmingIcon from '../../../assets/swimming.png';
+import cleaningIcon from '../../../assets/cleaning.png';
+import gardeningIcon from '../../../assets/gardening.png';
 
 const Carousel = () => {
   return (
@@ -39,7 +44,7 @@ const Carousel = () => {
           <div>
             <div>
               <img
-                src={generatorServiceIcon}
+                src={electricalIcon}
                 alt="generator-service"
                 className={`mx-auto mt-10 ${styles.servicesImage}`}
               />
@@ -61,7 +66,7 @@ const Carousel = () => {
           <div>
             <div>
               <img
-                src={generatorServiceIcon}
+                src={plumbingIcon}
                 alt="generator-service"
                 className={`mx-auto mt-10 ${styles.servicesImage}`}
               />
@@ -83,7 +88,7 @@ const Carousel = () => {
           <div>
             <div>
               <img
-                src={generatorServiceIcon}
+                src={swimmingIcon}
                 alt="generator-service"
                 className={`mx-auto mt-10 ${styles.servicesImage}`}
               />
@@ -105,7 +110,7 @@ const Carousel = () => {
           <div>
             <div>
               <img
-                src={generatorServiceIcon}
+                src={cleaningIcon}
                 alt="generator-service"
                 className={`mx-auto mt-10 ${styles.servicesImage}`}
               />
@@ -126,7 +131,7 @@ const Carousel = () => {
           <div>
             <div>
               <img
-                src={generatorServiceIcon}
+                src={gardeningIcon}
                 alt="generator-service"
                 className={`mx-auto mt-10 ${styles.servicesImage}`}
               />

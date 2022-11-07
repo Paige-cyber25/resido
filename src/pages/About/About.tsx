@@ -9,7 +9,7 @@ const About = () => {
   return (
     <div>
       <div className={`bg-light_grey w-full h-full`}>
-        <h2 className="text-dark_grey font-semibold text-3xl mx-auto pt-20 text-center">
+        <h2 className="text-dark_grey font-semibold text-3xl mx-auto lg:pt-[10rem] text-center">
           About us
         </h2>
         <div

@@ -7,9 +7,9 @@ import { HomeBackdrop } from "../customisedIcons/HomeBackdrop";
 
 const Banner = () => {
   return (
-    <div className="bg-light_yellow py-20 lg:py-0 px-5 overflow-hidden w-full relative flex flex-col lg:flex-row items-center justify-around ">
+    <div className="bg-light_yellow py-20 lg:py-0 px-5 overflow-hidden w-full relative flex flex-col lg:flex-row items-center justify-around lg:pt-[8rem]">
         <div className='text-center lg:text-left lg:pt-[117px] pb-20 lg:pb-[150px] z-10'>
-          <h2 className={`text-dark_black max-w-[19rem] m-auto lg:mr-auto ${styles.header}`}>
+          <h2 className={`text-dark_black max-w-[19rem] m-auto lg:mr-auto  ${styles.header}`}>
             Quick and easy home management solutions just for you
           </h2>
           <p className={`mb-4 text-dark_black max-w-[589px] m-auto pl-0 lg:pl-[9rem]  ${styles.p}`}>

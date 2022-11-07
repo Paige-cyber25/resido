@@ -162,9 +162,9 @@ const MainContent = () => {
         <h2 className={`text-center lg:text-left text-dark_grey font-semibold text-xl lg:text-4xl mb-10 lg:mb-20`}>
           Frequently asked questions
         </h2>
-        <div className={`flex flex-col lg:flex-row gap-10 mb-8`}>
+        <div className={`flex flex-col lg:flex-row gap-10 mb-8 justify-between`}>
           <div
-            className={`flex items-center md:justify-between lg:gap-[14rem] p-5 ${styles.questionsWrapper}`}
+            className={`flex items-center md:justify-between lg:gap-80 p-5 ${styles.questionsWrapper}`}
           >
             <p className={`text-base`}>Can i get a refund?</p>
             <img src={plusIcon} alt="plus_icon" />
@@ -176,7 +176,7 @@ const MainContent = () => {
             <img src={plusIcon} alt="plus_icon" />
           </div>
         </div>
-        <div className={`flex flex-col lg:flex-row gap-10 mb-8`}>
+        <div className={`flex flex-col lg:flex-row gap-10 mb-8 justify-between`}>
           <div
             className={`flex items-center justify-between lg:gap-80 p-4 ${styles.questionsWrapper}`}
           >
