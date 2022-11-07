@@ -9,6 +9,7 @@ import Button from "../../components/shared/Button/Button";
 import arrowRightIcon from "../../assets/arrow-right.svg";
 import suppportIcon from "../../assets/support.svg";
 import { registerUser } from "../../API/endpoints/Create";
+import PaymentModal from "../../components/Modals/PaymentModal";
 
 
 
@@ -19,6 +20,8 @@ const GetStarted = () => {
   const [formSteps] = useState([
     { name: "housingInfo", index: 0 },
     { name: "personalInfo", index: 1 },
+    { name: "summaryInfo", index: 2 },
+
   ]);
   const renderNextForm = () => {
     setCurrentFormKey(currentFormKey + 1);
@@ -26,6 +29,8 @@ const GetStarted = () => {
   const [frequencies, setFrequencies] = useState([]);
   const [houseTypes, setHouseTypes] = useState([]);
   const [price , setPrice] = useState<any>({});
+  const [showPaymentModal , setShowPaymentModal] = useState<any>(false);
+
 
   const isThisForm = (formStepIndex: any) => {
     return currentFormKey === formSteps[formStepIndex].index;
@@ -38,7 +43,9 @@ const GetStarted = () => {
     { label: "Ikoyi", value: "Ikoyi" },
     { label: "Lekki Phase 1", value: "Lekki Phase 1" },
     { label: "Banana Island", value: "Banana Island" },
-  ];
+  ]; 
+
+ const openPaymentModal= ()=> setShowPaymentModal(true)
   
 
 
@@ -462,7 +469,8 @@ const GetStarted = () => {
                   type="filled"
                   bgColor="light_blue"
                   color="dark_blue"
-                  text="Get started"
+                  text="Let’s get started"
+                  onClick={renderNextForm}
                   classes="w-32 h-10 md:w-28 xl:w-36 rounded-md text-sm capitalize text-dark_blue bg-light_blue"
                 />
               </div>
@@ -471,6 +479,65 @@ const GetStarted = () => {
         </div>
           </>
         )}
+        {isThisForm(2) && (
+          <div>
+            <div>
+              <img src="./assets/left-arrow-direction" alt="left-arrow"/>
+            </div>
+            <div>
+          <h5
+            className={`text-right pr-64 pt-10 text-dark_grey font-medium mt-20 text-base`}
+          >
+          </h5>
+          <div className={` mx-auto mt-2 ${styles.formContainerSummary}`}>
+            <div className={`${styles.flexBox} ${styles.headerSummary}`}>
+              <h2>Total (Vat Inclusive)</h2>
+              <h2  className={`${styles.medium_text_bold}`}>₦25,000</h2>
+            </div>
+            <h2 className={`${styles.medium_text_bold}`}>Breakdown</h2>
+<div>
+  <h3 className={`${styles.title_sub_text}`}>Apartment Type</h3>
+  <div className={`${styles.flexBox}`}>
+    <p className={`${styles.medium_text}`}>3+ Bedroom Apartment</p>
+    <p className={`${styles.medium_text}`}>₦26,000</p>
+  </div>
+</div>
+           
+
+           
+<div>
+  <h3 className={`${styles.medium_text}`}>Discount</h3>
+  <div className={`${styles.flexBox}`}>
+    <p className={`${styles.medium_text} ${styles.discount}`}>10% off</p>
+    <p className={`${styles.medium_text} ${styles.discount_fee}`}>-₦1,000</p>
+  </div>
+</div>
+           
+
+        <div className={`${styles.flexBox}`}>
+          <p className={`${styles.title_sub_text}`}>Location</p>
+          <p className={`${styles.title_sub_text}`}>Home Address</p>
+          </div>  
+
+
+          <div className={`${styles.flexBox}`}>
+          <p className={`${styles.medium_text}`}>Victoria Island</p>
+          <p>104, Saka Tinubu street</p>
+          </div> 
+
+
+           <h4 className={`${styles.title_sub_text}`}>Frequency</h4> 
+           <h3 className={`${styles.medium_text}`}>Monthly</h3>
+
+
+
+           <button type="button" onClick={openPaymentModal} className={`${styles.btn_payment}`}>Pay ₦25,000 </button>
+          </div>
+        </div>
+          </div>
+          
+        )}
+        <PaymentModal visible={showPaymentModal}/>
     </form>
   );
 };

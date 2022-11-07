@@ -1,63 +1,109 @@
 .getStartedContainer {
-    height: 70rem;
+  height: 70rem;
 }
 
 .firstWrapper {
-    border: 1px solid #BCE4F1;
-    border-radius: 10px;
-    width: 60.25rem;
-    height: 15rem;
+  border: 1px solid #bce4f1;
+  border-radius: 10px;
+  width: 60.25rem;
+  height: 15rem;
 }
 
 .secondChoiceWrapper {
-    border: 1px solid #BCE4F1;
-    border-radius: 10px;
-    width: 60.25rem;
-    height: 20rem;
+  border: 1px solid #bce4f1;
+  border-radius: 10px;
+  width: 60.25rem;
+  height: 20rem;
 }
 
 .homeContainer {
-    width: 45%;
+  width: 45%;
 }
 
 .divider {
-    width: 95%;
+  width: 95%;
 }
 
 .inputField {
-    border: 1px solid #BCE4F1;
-    border-radius: 10px;
+  border: 1px solid #bce4f1;
+  border-radius: 10px;
 }
 
 .borderBottom {
-    border-bottom: 1px solid #BCE4F1;
+  border-bottom: 1px solid #bce4f1;
 }
 
 select {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    outline: none;
-    cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .formContainer {
-    border: 1px solid #BCE4F1;
-    border-radius: 10px;
-    width: 60.25rem;
-    height: 55rem;
+  border: 1px solid #bce4f1;
+  border-radius: 10px;
+  width: 60.25rem;
+  height: 55rem;
 }
+.formContainerSummary {
+  border: 1px solid #bce4f1;
+  border-radius: 10px;
+  width: 30.25rem;
+  height: 40rem;
+  padding: 2rem;
 
+  div {
+    margin-bottom: 2rem;
+  }
+}
 .formInputField {
-    border: 1px solid #BCE4F1;
-    border-radius: 10px;
-    width: 49.5rem;
-    outline: none;
+  border: 1px solid #bce4f1;
+  border-radius: 10px;
+  width: 49.5rem;
+  outline: none;
 }
 
 ::placeholder {
-    padding-left: 2rem;
-    color: #CAC4C3;
+  padding-left: 2rem;
+  color: #cac4c3;
 }
 
-
-
+.medium_text_bold,
+.medium_text {
+  font-weight: 700;
+  font-size: 16px;
+  color: #121113;
+  margin-bottom: 1rem;
+}
+.medium_text {
+  font-size: 16px;
+  font-weight: 400;
+}
+.title_sub_text {
+  color: #63636f;
+  font-weight: 400;
+  font-size: 14px;
+}
+.flexBox {
+  display: flex;
+  justify-content: space-between;
+}
+.discount {
+  color: #dbcf87;
+}
+.discount_fee {
+  color: #e74a27;
+}
+.btn_payment {
+  color: #fff;
+  background-color: #2ba2d3;
+  text-align: center;
+  width: 100%;
+  padding: 1.2rem 1.6rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+.headerSummary {
+  border-bottom: #f0efeb 1px solid;
+}
