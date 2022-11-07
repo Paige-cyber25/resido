@@ -1,0 +1,63 @@
+.getStartedContainer {
+    height: 70rem;
+}
+
+.firstWrapper {
+    border: 1px solid #BCE4F1;
+    border-radius: 10px;
+    width: 60.25rem;
+    height: 15rem;
+}
+
+.secondChoiceWrapper {
+    border: 1px solid #BCE4F1;
+    border-radius: 10px;
+    width: 60.25rem;
+    height: 20rem;
+}
+
+.homeContainer {
+    width: 45%;
+}
+
+.divider {
+    width: 95%;
+}
+
+.inputField {
+    border: 1px solid #BCE4F1;
+    border-radius: 10px;
+}
+
+.borderBottom {
+    border-bottom: 1px solid #BCE4F1;
+}
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.formContainer {
+    border: 1px solid #BCE4F1;
+    border-radius: 10px;
+    width: 60.25rem;
+    height: 55rem;
+}
+
+.formInputField {
+    border: 1px solid #BCE4F1;
+    border-radius: 10px;
+    width: 49.5rem;
+    outline: none;
+}
+
+::placeholder {
+    padding-left: 2rem;
+    color: #CAC4C3;
+}
+
+
+

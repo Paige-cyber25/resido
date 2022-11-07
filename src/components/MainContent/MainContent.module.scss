@@ -1,0 +1,61 @@
+.subHeader {
+    max-width: 42rem;
+}
+
+.residoSubHeader {
+    max-width: 28rem;
+}
+
+.storyContainer {
+    max-width: 63rem;
+    height: 22.2rem;
+    border-radius: 20px;
+    position: relative;
+
+    .storyContent {
+        max-width: 34rem;
+    }
+}
+
+.homeServiceHeader {
+    max-width: 30rem;
+    line-height: 3rem;
+}
+
+.homeServiceContent {
+    max-width: 22rem;
+    line-height: 1.5rem;
+}
+
+.questionsWrapper {
+    border: 1px solid #544947;
+    border-radius: 10px;
+}
+
+.customerContent {
+    max-width: 22rem;
+    line-height: 1.5rem;
+}
+
+.inputWrapper {
+    margin-bottom: 20rem;
+
+    .input {
+        max-width:23rem;
+        border: 1px solid #544947;
+        border-radius: 10px;
+        outline: none;       
+    }
+   
+}
+
+.whiteArrowRightWrapper {
+    border-radius: 5px;
+    background: #2AA2D2;
+
+    .whiteArrowRight {
+        margin: .5rem auto;
+    }
+}
+
+

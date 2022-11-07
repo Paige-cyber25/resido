@@ -1,0 +1,25 @@
+.formContainer {
+    border: 1px solid #BCE4F1;
+    border-radius: 10px;
+    width: 60.25rem;
+    height: 55rem;
+
+    .borderBottom {
+        border-bottom: 1px solid #BCE4F1;
+    }
+
+    .formInputField {
+        border: 1px solid #BCE4F1;
+        border-radius: 10px;
+        width: 49.5rem;
+        outline: none;
+    }
+    
+    ::placeholder {
+        padding-left: 2rem;
+        color: #CAC4C3;
+    }
+}
+
+
+

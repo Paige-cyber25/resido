@@ -1,0 +1,29 @@
+.servicesImage {
+  width: 70rem;
+}
+
+:global(.carousel) {
+  max-height: 940px;
+}
+
+:global(.carousel__slider) {
+  max-height: 940px;
+}
+
+:global(.carousel__dot){
+    width: 12px;
+    height: 12px;
+    background: #BCE4F1;
+    border-radius: 6px;
+    margin-right: 8px;
+  }
+
+  :global(.carousel__dot--selected){
+    background: #2AA2D2!important;
+   }
+  
+
+  .dotContainer {
+    left: 46%;
+    top: 75%;
+  }
