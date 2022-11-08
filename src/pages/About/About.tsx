@@ -9,26 +9,26 @@ const About = () => {
   return (
     <div>
       <div className={`bg-light_grey w-full h-full`}>
-        <h2 className="text-dark_grey font-semibold text-3xl mx-auto lg:pt-[10rem] text-center">
+        <h2 className="text-dark_grey font-semibold text-3xl mx-auto pt-[10rem] lg:pt-[10rem] text-center">
           About us
         </h2>
         <div
           className={`mt-10 text-light text-base text-dark_grey mx-auto text-center ${styles.aboutContent}`}
         >
-          <p>
+          <p className={`px-[2rem] lg:px-0`}>
             RESIDO is a subsidiary of Filmo Facilities Management, a market
             leader in residential and commercial facilities management. We
             provide premium home management services to individuals and
             organisations who want to eliminate the added stress of maintaining
             their home.
           </p>
-          <p className={`pt-10 text-center`}>
+          <p className={`px-[2rem] lg:px-0 pt-10 text-center`}>
             We do this through our team of highly trained and certified
             technicians. Our services are benchmarked against global home
             management standards. Our clients can expect professional service,
             attention to detail, timely delivery, and transparency from us.
           </p>
-          <p className={`pt-10 text-center`}>
+          <p className={`px-[2rem] lg:px-0 pt-10 text-center`}>
             We respond swiftly to our clients’ requests - Our technicians report
             on-site within 20-60 minutes of booking. We monitor all jobs from
             our digital control room to ensure excellence is not compromised. We
@@ -37,17 +37,17 @@ const About = () => {
           </p>
         </div>
         <div
-          className={`bg-light_blue w-3/4 h-1/2 mt-20 mx-auto flex justify-between`}
+          className={`bg-light_blue w-3/4 h-1/2 mt-20 mx-auto flex flex-cols lg:flex-row justify-between`}
         >
           <img
             src={leftAboutUs}
             alt="left-about-us"
-            className={` ${styles.leftImage}`}
+            className={`max-w-[12rem] lg:max-w-12rem] ${styles.leftImage}`}
           />
           <img
             src={rightAboutUs}
             alt="right-about-us"
-            className={` h-3/4 ${styles.leftImage}`}
+            className={`max-w-[12rem] lg:max-w-[33rem] h-3/4 ${styles.leftImage}`}
           />
         </div>
         <div className={`mt-20 mx-auto`}>

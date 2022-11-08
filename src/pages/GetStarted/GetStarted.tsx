@@ -107,7 +107,7 @@ const GetStarted = () => {
     }
   }
 
-  const { handleSubmit, setFieldValue, isValid, errors, touched, values } = useFormik({
+  const { handleSubmit, setFieldValue, isValid, dirty, isSubmitting, values } = useFormik({
     initialValues: {
       house_type: "",
       location: "",
@@ -172,16 +172,16 @@ const GetStarted = () => {
       {isThisForm(0) && (
         <>
           <div>
-            <h2 className="text-dark_grey font-semibold mt-20 text-3xl mx-auto lg:pt-[4rem] text-center">
+            <h2 className="text-dark_grey font-semibold mt-20 px-[2rem] text-xl lg:text-3xl mx-auto pt-[4rem] lg:pt-[4rem] text-center">
               At Resido, we give value for your money
             </h2>
-            <p className={`text-center text-dark_grey font-light pt-8 text-xl`}>
+            <p className={`text-center text-dark_grey font-light pt-8 text-lg lg:text-xl`}>
               Choose a plan, let’s walk you through it.
             </p>
 
-            <div className={`mx-auto mt-10 ${styles.firstWrapper}`}>
+            <div className={`mx-[2rem] lg:mx-auto mt-10 ${styles.firstWrapper}`}>
               <p
-                className={`text-center font-normal text-dark_grey pt-4 text-lg `}
+                className={`text-center font-normal text-dark_grey pt-4 lg:text-lg `}
               >
                 Which of this best describes your home?
               </p>
@@ -192,7 +192,7 @@ const GetStarted = () => {
                     <div className={`p-2 ${styles.inputField}`}>
                       <input
                         type="checkbox"
-                        className={`ml-6`}
+                        className={`ml-2 lg:ml-6`}
                         name="house_type"
                         value={values.house_type}
                         checked={values.house_type === houseTypeObject?.[0]?.id}
@@ -200,7 +200,7 @@ const GetStarted = () => {
                           setFieldValue("house_type", houseTypeObject?.[0]?.id)
                         }
                       />
-                      <label className={`text-dark_grey font-light pl-6`}>
+                      <label className={`text-dark_grey font-light pl-4 lg:pl-6`}>
                         {houseTypeObject?.[0]?.name}
                       </label>
                     </div>
@@ -210,7 +210,7 @@ const GetStarted = () => {
                   <div className={` p-2 ${styles.inputField}`}>
                     <input
                       type="checkbox"
-                      className={`ml-6`}
+                      className={`ml-2 lg:ml-6`}
                       name="house_type"
                       value={values.house_type}
                       checked={values.house_type === houseTypeObject?.[1]?.id}
@@ -218,7 +218,7 @@ const GetStarted = () => {
                         setFieldValue("house_type", houseTypeObject?.[1]?.id)
                       }
                     />
-                    <label className={`text-dark_grey font-light pl-6`}>
+                    <label className={`text-dark_grey font-light pl-4 lg:pl-6`}>
                       {houseTypeObject?.[1]?.name}
                     </label>
                   </div>
@@ -231,7 +231,7 @@ const GetStarted = () => {
                     <div className={`p-2 ${styles.inputField}`}>
                       <input
                         type="checkbox"
-                        className={`ml-6`}
+                        className={`ml-2 lg:ml-6`}
                         name="house_type"
                         value={values.house_type}
                         checked={values.house_type === houseTypeObject?.[2]?.id}
@@ -239,7 +239,7 @@ const GetStarted = () => {
                           setFieldValue("house_type", houseTypeObject?.[2]?.id)
                         }
                       />
-                      <label className={`text-dark_grey font-light pl-6`}>
+                      <label className={`text-dark_grey font-light pl-4 lg:pl-6`}>
                         {houseTypeObject?.[2]?.name}
                       </label>
                     </div>
@@ -249,7 +249,7 @@ const GetStarted = () => {
                   <div className={` p-2 ${styles.inputField}`}>
                     <input
                       type="checkbox"
-                      className={`ml-6`}
+                      className={`ml-1 lg:ml-6`}
                       name="house_type"
                       value={values.house_type}
                       checked={values.house_type === houseTypeObject?.[3]?.id}
@@ -257,7 +257,7 @@ const GetStarted = () => {
                         setFieldValue("house_type", houseTypeObject?.[3]?.id)
                       }
                     />
-                    <label className={`text-dark_grey font-light pl-6`}>
+                    <label className={`text-dark_grey font-light pl-[0.1rem] lg:pl-6`}>
                       {houseTypeObject?.[3]?.name}
                     </label>
                   </div>
@@ -265,9 +265,9 @@ const GetStarted = () => {
               </div>
             </div>
 
-            <div className={`mx-auto mt-10 ${styles.secondChoiceWrapper}`}>
+            <div className={`mx-[2rem] lg:mx-auto mt-10 ${styles.secondChoiceWrapper}`}>
               <p
-                className={`text-center font-normal text-dark_grey pt-6 text-lg pb-2 ${styles.borderBottom} `}
+                className={`text-center font-normal text-dark_grey pt-6 lg:text-lg pb-2 ${styles.borderBottom} `}
               >
                 Let us know where you are
               </p>
@@ -275,12 +275,12 @@ const GetStarted = () => {
               <div className={`inline-flex w-full justify-center`}>
                 <div className={`${styles.homeContainer}`}>
                   <div className={`${styles.divider}`}>
-                    <div className={`p-6 ${styles.inputField}`}>
-                      <label className={`text-dark_grey font-light pl-6 mb-4`}>
+                    <div className={` p-2 lg:p-6 ${styles.inputField}`}>
+                      <label className={`text-dark_grey font-light pl-1 lg:pl-6 mb-4`}>
                         Location
                       </label>
                       <div
-                        className={`flex justify-between p-2 mt-2 cursor-pointer ${styles.inputField}`}
+                        className={`flex flex-cols lg:flex-row lg:justify-between p-2 mt-2 cursor-pointer ${styles.inputField}`}
                       >
                         <select
                           name="location"
@@ -288,7 +288,7 @@ const GetStarted = () => {
                             setFieldValue("location", e.target.value)
                           }
                           value={values.location}
-                          className={`ml-6 w-96 text-dark_grey bg-light_grey font-light`}
+                          className={`lg:ml-6 lg:w-96 text-dark_grey bg-light_grey font-light`}
                         >
                           {locations.map((location: any) => {
                             return (
@@ -304,7 +304,7 @@ const GetStarted = () => {
                   </div>
                 </div>
                 <div className={`${styles.homeContainer}`}>
-                  <div className={` p-6 ${styles.inputField}`}>
+                  <div className={` p-2 lg:p-6 ${styles.inputField}`}>
                     <label className={`text-dark_grey font-light pl-6 mb-4`}>
                       Frequency
                     </label>
@@ -317,7 +317,7 @@ const GetStarted = () => {
                         onChange={(e) =>
                           setFieldValue("frequency", e.target.value)
                         }
-                        className={`ml-6 w-96 text-dark_grey bg-light_grey font-light capitalize`}
+                        className={`lg:ml-6 lg:w-96 text-dark_grey bg-light_grey font-light capitalize`}
                       >
                         <option value="" defaultChecked>
                           Select frequency
@@ -342,18 +342,18 @@ const GetStarted = () => {
 
             <div className={`mt-20 flex items-center justify-between`}>
               <p
-                className={`text-left pl-64 text-dark_grey font-light text-lg`}
+                className={`text-left pl-[3rem] lg:pl-64 text-dark_grey font-light text-base lg:text-lg`}
               >
                 Total (+ VAT)
               </p>
 
-              <div className="text-right pr-64 font-bold bg-light_grey text-dark_grey text-2xl">
+              <div className="text-right pr-[3rem] lg:pr-64 font-bold bg-light_grey text-dark_grey text-base lg:text-2xl">
                 <p className="price">₦ {NumberWithComma(price.price)}</p>
               </div>
             </div>
 
             <div
-              className={`flex items-center justify-end mt-20 pr-60 gap-4`}
+              className={`flex items-center justify-end mt-20 pr-[3rem] lg:pr-60 gap-4`}
               onClick={renderNextForm}
             >
               <Button
@@ -378,18 +378,18 @@ const GetStarted = () => {
         <>
           <div className={``}>
             <h5
-              className={`text-right pr-64 pt-10 text-dark_grey font-medium mt-20 text-base`}
+              className={`text-center lg:text-right lg:pr-64 pt-10 text-dark_grey font-medium mt-20 text-base`}
             >
               Fields marked * are compulsory
             </h5>
-            <div className={`mx-auto mt-2 lg:p-4 ${styles.formContainer}`}>
+            <div className={` mx-[2rem] lg:mx-auto mt-4 lg:mt-2 lg:p-4 ${styles.formContainer}`}>
               <h4
-                className={`text-center lg:mt-4 text-dark_grey font-semibold lg:pb-4 lg:text-xl ${styles.borderBottom}`}
+                className={`text-center lg:mt-4 text-dark_grey font-semibold pb-2 lg:pb-4 lg:text-xl ${styles.borderBottom}`}
               >
                 Personal info
               </h4>
 
-              <div className={`lg:mt-8 lg:mb-8 lg:ml-[5rem]`}>
+              <div className={`mt-8 lg:mt-8 mb-4 lg:mb-8 ml-[3rem] lg:ml-[5rem]`}>
                 <label className={`mb-8`}>Full name*</label>
                 <br />
                 <input
@@ -398,11 +398,11 @@ const GetStarted = () => {
                   value={values.name}
                   onChange={(e) => setFieldValue("name", e.target.value)}
                   placeholder="Enter your full name"
-                  className={`lg:mt-4 bg-light_grey p-3 ${styles.formInputField}`}
+                  className={`mt-4 lg:mt-4 bg-light_grey p-3 lg:w-[49.5rem] ${styles.formInputField}`}
                 />
               </div>
 
-              <div className={`lg:mt-8 lg:mb-8 lg:ml-[5rem]`}>
+              <div className={`lg:mt-8 mb-4 lg:mb-8 ml-[3rem] lg:ml-[5rem]`}>
                 <label className={``}>Email*</label>
                 <br />
                 <input
@@ -411,11 +411,11 @@ const GetStarted = () => {
                   value={values.email}
                   onChange={(e) => setFieldValue("email", e.target.value)}
                   placeholder="Enter your email"
-                  className={`mt-4 bg-light_grey p-3 ${styles.formInputField}`}
+                  className={`mt-4 bg-light_grey p-3 lg:w-[49.5rem] ${styles.formInputField}`}
                 />
               </div>
 
-              <div className={`lg:mt-8 lg:mb-8 lg:ml-[5rem]`}>
+              <div className={`lg:mt-8 mb-4 lg:mb-8 ml-[3rem] lg:ml-[5rem]`}>
                 <label className={``}>Home address*</label>
                 <br />
                 <input
@@ -426,12 +426,13 @@ const GetStarted = () => {
                     setFieldValue("home_address", e.target.value)
                   }
                   placeholder="Enter your home address"
-                  className={`mt-4 bg-light_grey p-3 ${styles.formInputField}`}
+                  className={`mt-4 bg-light_grey p-3 lg:w-[49.5rem] ${styles.formInputField}`}
                 />
               </div>
 
-              <div className={`lg:mt-8 lg:mb-8 lg:ml-[5rem]`}>
+              <div className={`lg:mt-8 mb-4 lg:mb-8 ml-[3rem] lg:ml-[5rem]`}>
                 <label className={``}>Whatsapp number*</label>
+                <br />
                 <input
                   type="number"
                   name="whatsapp_number"
@@ -440,12 +441,13 @@ const GetStarted = () => {
                     setFieldValue("whatsapp_number", e.target.value)
                   }
                   placeholder="+234"
-                  className={`mt-4 bg-light_grey p-3 ${styles.formInputField}`}
+                  className={`mt-4 bg-light_grey p-3 lg:w-[49.5rem] ${styles.formInputField}`}
                 />
               </div>
 
-              <div className={`lg:mt-8 lg:mb-8 lg:ml-[5rem]`}>
+              <div className={`lg:mt-8 mb-4 lg:mb-8 ml-[3rem] lg:ml-[5rem]`}>
                 <label className={``}>Alternate Whatsapp number</label>
+                <br />
                 <input
                   type="number"
                   name="alt_whatsapp_number"
@@ -454,25 +456,26 @@ const GetStarted = () => {
                     setFieldValue("alt_whatsapp_number", e.target.value)
                   }
                   placeholder="+234"
-                  className={`lg:mt-4 bg-light_grey p-3 lg:mb-10 ${styles.formInputField}`}
+                  className={`mt-4 lg:mt-4 bg-light_grey p-3 lg:mb-10 lg:w-[49.5rem] ${styles.formInputField}`}
                 />
               </div>
 
-              <div className={`lg:mt-8 flex items-center justify-between`}>
+              <div className={` mt-8 lg:mt-8 mb-8 flex flex-cols items-center justify-between`}>
                 <a
                   href="https://wa.me/2349043284663"
                   target="_blank"
                   rel="noreferrer"
-                  className={`flex gap-2 pl-20`}
+                  className={`flex gap-2 pl-10 lg:pl-20`}
                 >
                   <img src={suppportIcon} alt="support" />
                   <p className={`underline text-dark_blue`}>Get support</p>
                 </a>
-                <div className={`flex items-center justify-en pr-20`}>
+                <div className={`flex items-center pr-10 lg:pr-20`}>
                   <Button
                     type="filled"
                     bgColor="light_blue"
                     color="dark_blue"
+                    disabled={!(isValid && dirty) || isSubmitting}
                     text="Submit"
                     classes="w-32 h-10 md:w-28 xl:w-36 rounded-md text-sm capitalize text-dark_blue bg-light_blue"
                   />

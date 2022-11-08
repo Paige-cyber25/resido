@@ -8,7 +8,7 @@ const Contact = () => {
   return (
     <div>
       <div className={`bg-light_grey w-full lg:h-[35rem]`}>
-        <h2 className="text-dark_grey font-semibold text-3xl mx-auto lg:pt-[10rem] text-center ">
+        <h2 className="text-dark_grey font-semibold text-3xl mx-auto pt-[10rem] lg:pt-[10rem] text-center ">
           Contact us
         </h2>
         <p className="text-dark_grey font-light text-base mx-auto pt-10 pb-10 text-center">
