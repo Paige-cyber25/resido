@@ -10,6 +10,7 @@ import arrowRightIcon from "../../assets/arrow-right.svg";
 import suppportIcon from "../../assets/support.svg";
 import { registerUser } from "../../API/endpoints/Create";
 import NumberWithComma from "../../components/helpers/numberWithComma";
+import PaymentModal from "../../components/Modals/PaymentModal";
 
 const GetStarted = () => {
   const navigate = useNavigate();
@@ -18,13 +19,18 @@ const GetStarted = () => {
   const [formSteps] = useState([
     { name: "housingInfo", index: 0 },
     { name: "personalInfo", index: 1 },
+    { name: "summaryInfo", index: 2 },
   ]);
   const renderNextForm = () => {
     setCurrentFormKey(currentFormKey + 1);
   };
+  const renderPreviousForm = () => {
+    setCurrentFormKey(currentFormKey - 1);
+  };
   const [frequencies, setFrequencies] = useState([]);
   const [houseTypes, setHouseTypes] = useState([]);
   const [price, setPrice] = useState<any>({});
+  const [showPaymentModal, setShowPaymentModal] = useState<any>(false);
 
   const isThisForm = (formStepIndex: any) => {
     return currentFormKey === formSteps[formStepIndex].index;
@@ -37,6 +43,42 @@ const GetStarted = () => {
     { label: "Lekki Phase 1", value: "Lekki Phase 1" },
     { label: "Banana Island", value: "Banana Island" },
   ];
+
+  const apartmentTypes = {
+    1: "House 7+",
+    2: "D/SD House",
+    3: "Townhouse",
+    4: "3+ Bed Apartment"
+};
+
+const frequencyOptions = {
+  2: "quarterly",
+  3: "yearly"
+}
+
+
+
+// const apartmentPrices = {
+//   "House 7+": {
+//     quarterly: 30000,
+//     yearly: 108000,
+//   },
+//   'D/SD House': {
+//     quarterly: 54000,
+//     yearly: 194400,
+//   },
+//   'Townhouse': {
+//     quarterly: 60000,
+//     yearly: 216000,
+//   },
+//   "3+ Bed Apartment": {
+//     quarterly: 75000,
+//     yearly: 270000,
+//   },
+// };
+  
+
+  const openPaymentModal = () => setShowPaymentModal(true);
 
   //  let locationValue:any = locations.find((ele)=> ele.value === formValues.location);
   //  let frequencyValue:any = frequencyOptions.find((ele)=> ele.value === formValues.frequency);
@@ -107,62 +149,68 @@ const GetStarted = () => {
     }
   }
 
-  const { handleSubmit, setFieldValue, isValid, dirty, isSubmitting, values } = useFormik({
-    initialValues: {
-      house_type: "",
-      location: "",
-      frequency: "",
-      amount: "",
-      name: "",
-      email: "",
-      whatsapp_number: "",
-      alt_whatsapp_number: "",
-      address: "",
-    },
-    validationSchema: Yup.object({
-      name: Yup.string().required("Please input your full name"),
-      email: Yup.string()
-        .email("Use valid format")
-        .required("Please input your email address"),
-      address: Yup.string().required("Please input your home address"),
-      whatsapp_number: Yup.number().required(
-        "Please input your whatsapp number"
-      ),
-    }),
-    async onSubmit(values: any) {
-      if (isValid) {
-        setFormValues({ ...values });
+  const { handleSubmit, setFieldValue, isValid, values } =
+    useFormik({
+      initialValues: {
+        house_type: "",
+        location: "",
+        frequency: "",
+        amount: "",
+        name: "",
+        email: "",
+        whatsapp_number: "",
+        alt_whatsapp_number: "",
+        address: "",
+      },
+      validationSchema: Yup.object({
+        name: Yup.string().required("Please input your full name"),
+        email: Yup.string()
+          .email("Use valid format")
+          .required("Please input your email address"),
+        address: Yup.string().required("Please input your home address"),
+        whatsapp_number: Yup.number().required(
+          "Please input your whatsapp number"
+        ),
+      }),
+      async onSubmit(values: any) {
+        if (isValid) {
+          setFormValues({ ...values });
 
-        let postData = {
-          name: values.name,
-          email: values.email,
-          location: values.location,
-          whatsapp_number: values.whatsapp_number,
-          alt_whatsapp_number: values.alt_whatsapp_number,
-          frequency: values.frequency,
-          house_type: values.house_type,
-          amount: price.price,
-        };
+          let postData = {
+            name: values.name,
+            email: values.email,
+            location: values.location,
+            whatsapp_number: values.whatsapp_number,
+            alt_whatsapp_number: values.alt_whatsapp_number,
+            frequency: values.frequency,
+            house_type: values.house_type,
+            amount: price.price,
+          };
 
-        try {
-          const postRes = await registerUser({ params: postData });
-          console.log(postData);
-          if (postRes) {
-            console.log(postRes);
+          try {
+            const postRes = await registerUser({ params: postData });
+            console.log(postData);
+            if (postRes) {
+              console.log(postRes);
+            }
+          } catch ({ error }) {
+            console.error(error);
           }
-        } catch ({ error }) {
-          console.error(error);
         }
-      }
-    },
-  });
+      },
+    });
 
   let houseTypeObject: any = Object.assign({}, houseTypes);
 
   useEffect(() => {
     getPrice(values.frequency, values.house_type);
   }, [values.frequency, values.house_type]);
+  
+  const totalAmount = NumberWithComma(price.price * 0.1);
 
+  const userWhatsappNumber = values.whatsapp_number;
+
+  const userEmail = values.email;
   return (
     <form
       className={`bg-light_grey w-full ${styles.getStartedContainer}`}
@@ -175,11 +223,15 @@ const GetStarted = () => {
             <h2 className="text-dark_grey font-semibold mt-20 px-[2rem] text-xl lg:text-3xl mx-auto pt-[4rem] lg:pt-[4rem] text-center">
               At Resido, we give value for your money
             </h2>
-            <p className={`text-center text-dark_grey font-light pt-8 text-lg lg:text-xl`}>
+            <p
+              className={`text-center text-dark_grey font-light pt-8 text-lg lg:text-xl`}
+            >
               Choose a plan, let’s walk you through it.
             </p>
 
-            <div className={`mx-[2rem] lg:mx-auto mt-10 ${styles.firstWrapper}`}>
+            <div
+              className={`mx-[2rem] lg:mx-auto mt-10 ${styles.firstWrapper}`}
+            >
               <p
                 className={`text-center font-normal text-dark_grey pt-4 lg:text-lg `}
               >
@@ -200,7 +252,9 @@ const GetStarted = () => {
                           setFieldValue("house_type", houseTypeObject?.[0]?.id)
                         }
                       />
-                      <label className={`text-dark_grey font-light pl-4 lg:pl-6`}>
+                      <label
+                        className={`text-dark_grey font-light pl-4 lg:pl-6`}
+                      >
                         {houseTypeObject?.[0]?.name}
                       </label>
                     </div>
@@ -239,7 +293,9 @@ const GetStarted = () => {
                           setFieldValue("house_type", houseTypeObject?.[2]?.id)
                         }
                       />
-                      <label className={`text-dark_grey font-light pl-4 lg:pl-6`}>
+                      <label
+                        className={`text-dark_grey font-light pl-4 lg:pl-6`}
+                      >
                         {houseTypeObject?.[2]?.name}
                       </label>
                     </div>
@@ -257,7 +313,9 @@ const GetStarted = () => {
                         setFieldValue("house_type", houseTypeObject?.[3]?.id)
                       }
                     />
-                    <label className={`text-dark_grey font-light pl-[0.1rem] lg:pl-6`}>
+                    <label
+                      className={`text-dark_grey font-light pl-[0.1rem] lg:pl-6`}
+                    >
                       {houseTypeObject?.[3]?.name}
                     </label>
                   </div>
@@ -265,7 +323,9 @@ const GetStarted = () => {
               </div>
             </div>
 
-            <div className={`mx-[2rem] lg:mx-auto mt-10 ${styles.secondChoiceWrapper}`}>
+            <div
+              className={`mx-[2rem] lg:mx-auto mt-10 ${styles.secondChoiceWrapper}`}
+            >
               <p
                 className={`text-center font-normal text-dark_grey pt-6 lg:text-lg pb-2 ${styles.borderBottom} `}
               >
@@ -276,7 +336,9 @@ const GetStarted = () => {
                 <div className={`${styles.homeContainer}`}>
                   <div className={`${styles.divider}`}>
                     <div className={` p-2 lg:p-6 ${styles.inputField}`}>
-                      <label className={`text-dark_grey font-light pl-1 lg:pl-6 mb-4`}>
+                      <label
+                        className={`text-dark_grey font-light pl-1 lg:pl-6 mb-4`}
+                      >
                         Location
                       </label>
                       <div
@@ -353,7 +415,7 @@ const GetStarted = () => {
             </div>
 
             <div
-              className={`flex items-center justify-end mt-20 pr-[3rem] lg:pr-60 gap-4`}
+              className={`flex items-center justify-end mt-20 pr-[3rem] lg:pr-60 gap-4 pb-8`}
               onClick={renderNextForm}
             >
               <Button
@@ -382,14 +444,18 @@ const GetStarted = () => {
             >
               Fields marked * are compulsory
             </h5>
-            <div className={` mx-[2rem] lg:mx-auto mt-4 lg:mt-2 lg:p-4 ${styles.formContainer}`}>
+            <div
+              className={` mx-[2rem] lg:mx-auto mt-4 lg:mt-2 lg:p-4 ${styles.formContainer}`}
+            >
               <h4
                 className={`text-center lg:mt-4 text-dark_grey font-semibold pb-2 lg:pb-4 lg:text-xl ${styles.borderBottom}`}
               >
                 Personal info
               </h4>
 
-              <div className={`mt-8 lg:mt-8 mb-4 lg:mb-8 ml-[3rem] lg:ml-[5rem]`}>
+              <div
+                className={`mt-8 lg:mt-8 mb-4 lg:mb-8 ml-[3rem] lg:ml-[5rem]`}
+              >
                 <label className={`mb-8`}>Full name*</label>
                 <br />
                 <input
@@ -458,33 +524,98 @@ const GetStarted = () => {
                   placeholder="+234"
                   className={`mt-4 lg:mt-4 bg-light_grey p-3 lg:mb-10 lg:w-[49.5rem] ${styles.formInputField}`}
                 />
-              </div>
 
-              <div className={` mt-8 lg:mt-8 mb-8 flex flex-cols items-center justify-between`}>
-                <a
-                  href="https://wa.me/2349043284663"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`flex gap-2 pl-10 lg:pl-20`}
+                <div
+                  className={` mt-8 lg:mt-8 mb-8 flex flex-cols items-center justify-between`}
                 >
-                  <img src={suppportIcon} alt="support" />
-                  <p className={`underline text-dark_blue`}>Get support</p>
-                </a>
-                <div className={`flex items-center pr-10 lg:pr-20`}>
-                  <Button
-                    type="filled"
-                    bgColor="light_blue"
-                    color="dark_blue"
-                    disabled={!(isValid && dirty) || isSubmitting}
-                    text="Submit"
-                    classes="w-32 h-10 md:w-28 xl:w-36 rounded-md text-sm capitalize text-dark_blue bg-light_blue"
-                  />
+                  <a
+                    href="https://wa.me/2349043284663"
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`flex gap-2 pl-10 lg:pl-20`}
+                  >
+                    <img src={suppportIcon} alt="support" />
+                    <p className={`underline text-dark_blue`}>Get support</p>
+                  </a>
+                  <div className={`flex items-center pr-10 lg:pr-20`}>
+                    <Button
+                      type="filled"
+                      bgColor="light_blue"
+                      color="dark_blue"
+                      onClick={renderNextForm}
+                      text="Submit"
+                      classes="w-32 h-10 md:w-28 xl:w-36 cursor-pointer rounded-md text-sm capitalize text-dark_blue bg-light_blue"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </>
       )}
+      {isThisForm(2) && (
+        <div>
+          <div>
+            <img src="./assets/left-arrow-direction" alt="left-arrow" />
+          </div>
+          <div>
+            <h5
+            onClick={renderPreviousForm}
+              className={`text-left cursor-pointer  pl-64 pt-10 text-dark_grey font-medium mt-20 text-base`}
+            >Back</h5>
+            <div className={` mx-auto mt-2 ${styles.formContainerSummary}`}>
+              <div className={`${styles.flexBox} ${styles.headerSummary}`}>
+                <h2>Total (Vat Inclusive)</h2>
+                <h2 className={`${styles.medium_text_bold}`}>₦{NumberWithComma(price.price * 0.1)}</h2>
+              </div>
+              <h2 className={`${styles.medium_text_bold}`}>Breakdown</h2>
+              <div>
+                <h3 className={`${styles.title_sub_text}`}>Apartment Type</h3>
+                <div className={`${styles.flexBox}`}>
+                  <p className={`${styles.medium_text}`}>
+                    {apartmentTypes[String(values.house_type)]}
+                  </p>
+                  <p className={`${styles.medium_text}`}>₦ {NumberWithComma(price.price)}</p>
+                </div>
+              </div>
+
+              <div>
+                <h3 className={`${styles.medium_text}`}>Discount</h3>
+                <div className={`${styles.flexBox}`}>
+                  <p className={`${styles.medium_text} ${styles.discount}`}>
+                    10% off
+                  </p>
+                  <p className={`${styles.medium_text} ${styles.discount_fee}`}>
+                    -₦1,000
+                  </p>
+                </div>
+              </div>
+
+              <div className={`${styles.flexBox}`}>
+                <p className={`${styles.title_sub_text}`}>Location</p>
+                <p className={`${styles.title_sub_text}`}>Home Address</p>
+              </div>
+
+              <div className={`${styles.flexBox}`}>
+                <p className={`${styles.medium_text}`}>{values.location}</p>
+                <p>{values.home_address}</p>
+              </div>
+
+              <h4 className={`${styles.title_sub_text}`}>Frequency</h4>
+              <h3 className={`capitalize ${styles.medium_text}`}>{frequencyOptions[String(values.frequency)]}</h3>
+
+              <button
+                type="button"
+                onClick={openPaymentModal}
+                className={`${styles.btn_payment}`}
+              >
+                Pay ₦{NumberWithComma(price.price * 0.1)}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      <PaymentModal {...{totalAmount, userWhatsappNumber, userEmail}}  visible={showPaymentModal} />
     </form>
   );
 };
