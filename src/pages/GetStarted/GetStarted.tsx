@@ -31,6 +31,7 @@ const GetStarted = () => {
   const [houseTypes, setHouseTypes] = useState([]);
   const [price, setPrice] = useState<any>({});
   const [showPaymentModal, setShowPaymentModal] = useState<any>(false);
+  const [paystackUrl, setPaystackUrl] = useState<string>()
 
   const isThisForm = (formStepIndex: any) => {
     return currentFormKey === formSteps[formStepIndex].index;
@@ -49,34 +50,34 @@ const GetStarted = () => {
     2: "D/SD House",
     3: "Townhouse",
     4: "3+ Bed Apartment"
-};
+  };
 
-const frequencyOptions = {
-  2: "quarterly",
-  3: "yearly"
-}
+  const frequencyOptions = {
+    2: "quarterly",
+    3: "yearly"
+  }
 
 
 
-// const apartmentPrices = {
-//   "House 7+": {
-//     quarterly: 30000,
-//     yearly: 108000,
-//   },
-//   'D/SD House': {
-//     quarterly: 54000,
-//     yearly: 194400,
-//   },
-//   'Townhouse': {
-//     quarterly: 60000,
-//     yearly: 216000,
-//   },
-//   "3+ Bed Apartment": {
-//     quarterly: 75000,
-//     yearly: 270000,
-//   },
-// };
-  
+  // const apartmentPrices = {
+  //   "House 7+": {
+  //     quarterly: 30000,
+  //     yearly: 108000,
+  //   },
+  //   'D/SD House': {
+  //     quarterly: 54000,
+  //     yearly: 194400,
+  //   },
+  //   'Townhouse': {
+  //     quarterly: 60000,
+  //     yearly: 216000,
+  //   },
+  //   "3+ Bed Apartment": {
+  //     quarterly: 75000,
+  //     yearly: 270000,
+  //   },
+  // };
+
 
   const openPaymentModal = () => setShowPaymentModal(true);
 
@@ -173,6 +174,7 @@ const frequencyOptions = {
         ),
       }),
       async onSubmit(values: any) {
+
         if (isValid) {
           setFormValues({ ...values });
 
@@ -200,12 +202,39 @@ const frequencyOptions = {
       },
     });
 
+
+  const onSubmit = async () => {
+    let postData = {
+      name: values.name,
+      email: values.email,
+      location: values.location,
+      whatsapp_number: values.whatsapp_number,
+      alt_whatsapp_number: values.alt_whatsapp_number,
+      frequency: values.frequency,
+      house_type: values.house_type,
+      amount: price.price,
+    };
+
+    try {
+      const postRes = await registerUser({ params: postData });
+      // const endpoint = 'https://resido-onboarding.herokuapp.com/users';
+
+      // const postRes = await axios.post(endpoint, postData)
+      console.log(postRes.data, "posRes");
+      if (postRes.data.user) {
+        setPaystackUrl(postRes.data.authorizationUrl)
+        openPaymentModal()
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
   let houseTypeObject: any = Object.assign({}, houseTypes);
 
   useEffect(() => {
     getPrice(values.frequency, values.house_type);
   }, [values.frequency, values.house_type]);
-  
+
   const totalAmount = NumberWithComma(price.price * 0.1);
 
   const userWhatsappNumber = values.whatsapp_number;
@@ -542,6 +571,7 @@ const frequencyOptions = {
                       type="filled"
                       bgColor="light_blue"
                       color="dark_blue"
+
                       onClick={renderNextForm}
                       text="Submit"
                       classes="w-32 h-10 md:w-28 xl:w-36 cursor-pointer rounded-md text-sm capitalize text-dark_blue bg-light_blue"
@@ -560,7 +590,7 @@ const frequencyOptions = {
           </div>
           <div>
             <h5
-            onClick={renderPreviousForm}
+              onClick={renderPreviousForm}
               className={`text-left cursor-pointer  pl-64 pt-10 text-dark_grey font-medium mt-20 text-base`}
             >Back</h5>
             <div className={` mx-auto mt-2 ${styles.formContainerSummary}`}>
@@ -605,8 +635,9 @@ const frequencyOptions = {
               <h3 className={`capitalize ${styles.medium_text}`}>{frequencyOptions[String(values.frequency)]}</h3>
 
               <button
-                type="button"
-                onClick={openPaymentModal}
+                type="submit"
+                // onClick={openPaymentModal}
+                onClick={onSubmit}
                 className={`${styles.btn_payment}`}
               >
                 Pay ₦{NumberWithComma(price.price * 0.1)}
@@ -615,7 +646,7 @@ const frequencyOptions = {
           </div>
         </div>
       )}
-      <PaymentModal {...{totalAmount, userWhatsappNumber, userEmail}}  visible={showPaymentModal} />
+      <PaymentModal {...{ totalAmount, userWhatsappNumber, userEmail, paystackUrl }} visible={showPaymentModal} />
     </form>
   );
 };

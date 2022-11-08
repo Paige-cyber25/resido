@@ -7,7 +7,7 @@ import { useState } from 'react'
 import axios from "axios";
 import useScript from '../../hooks/useScript'
 
-const PaymentModal = ({ visible, totalAmount, userWhatsappNumber, userEmail }) => {
+const PaymentModal = ({ visible, totalAmount, userWhatsappNumber, userEmail, paystackUrl }) => {
   const [openBankDetails, setOpenBankDetails] = useState(false)
 
   const openModal = () => {
@@ -18,7 +18,6 @@ const PaymentModal = ({ visible, totalAmount, userWhatsappNumber, userEmail }) =
   const NEXT_PUBLIC_WEMA_API_KEY = "0d296a5575ec4a0895c80d065fa44801"
   const NEXT_PUBLIC_WEMA_BUSINESS_ID = "348fc803-6a69-4580-e0ce-08daa1211597"
 
-  console.log(Alatpay, "alat pay")
 
   const payWithWema = () => {
     let popup = Alatpay?.setup({
@@ -62,10 +61,14 @@ const PaymentModal = ({ visible, totalAmount, userWhatsappNumber, userEmail }) =
           Select a Payment Method        </h1>
 
 
-        <div className="flex hover:cursor-pointer" onClick={() => window.open('https://checkout.paystack.com/xt0tvv3zvo9p57k')}>
-          <div className=""><img src={PayStackIcon} alt="" /></div>
-          <p>Pay with Paystack</p>
-        </div>
+        <a href={paystackUrl}
+          target="_blank"
+          rel="noreferrer">
+          <div className="flex hover:cursor-pointer">
+            <div className=""><img src={PayStackIcon} alt="" /></div>
+            <p>Pay with Paystack</p>
+          </div>
+        </a>
         <div className="flex">
           <div onClick={payWithWema}><img src={PayWithBankIcon} alt="" /></div>
           <p>Pay with Bank Transfer</p>

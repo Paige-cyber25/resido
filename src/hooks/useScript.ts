@@ -17,7 +17,6 @@ const useScript = (url: string, name: string) => {
         }
     }, [url]);
 
-    console.log(lib, "alat pay inside usescript")
     return lib
 };
 
