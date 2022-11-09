@@ -1,9 +1,9 @@
+// .mainContentWrapper {
+//     max-height: 3262px;
+// }
+
 .subHeader {
     max-width: 42rem;
-}
-
-.residoSubHeader {
-    max-width: 28rem;
 }
 
 .storyContainer {
@@ -18,19 +18,16 @@
 }
 
 .homeServiceHeader {
-    max-width: 30rem;
+    max-width: 39rem;
     line-height: 3rem;
 }
 
 .homeServiceContent {
-    max-width: 22rem;
-    line-height: 1.5rem;
+    max-width: 28rem;
+    line-height: 2rem;
 }
 
-.questionsWrapper {
-    border: 1px solid #544947;
-    border-radius: 10px;
-}
+
 
 .customerContent {
     max-width: 22rem;
@@ -42,9 +39,20 @@
 
     .input {
         max-width:23rem;
-        border: 1px solid #544947;
-        border-radius: 10px;
+        border: 1px solid #e5e7eb;
+        border-radius: 4px;
         outline: none;       
+    }
+
+    .emailInput {
+        max-width:18rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 4px;
+        outline: none; 
+    }
+
+    ::placeholder {
+        font-weight: 300;
     }
    
 }
@@ -57,5 +65,7 @@
         margin: .5rem auto;
     }
 }
+
+
 
 

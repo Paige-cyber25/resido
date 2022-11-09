@@ -5,7 +5,7 @@ import lockIcon from '../../../assets/lock.svg';
 
 export const Cards = () => {
   return (
-    <div className="flex flex-col lg:flex-row gap-5 lg:gap-2 mt-20 justify-center">
+    <div className="flex flex-col lg:flex-row gap-5 lg:gap-2 mt-[3rem] justify-center">
         <div className="bg-dark_yellow rounded-lg p-5 lg:p-8 m-auto w-80 lg:w-96 h-72">
           <h2 className="text-left font-semibold text-2xl mb-6 text-dark_grey">Affordable</h2>
           <p className="text-left font-light mb-8 w-72 text-xl text-dark_grey">
