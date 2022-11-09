@@ -5,6 +5,8 @@ import axios from "axios";
 const PaymentDetails = ({visible})=>{
 
 // Use props to get the whatsApp number
+    
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async function verifyPayment(whatsappNumber) {
         try {
           let request = axios.get(
@@ -38,7 +40,7 @@ const PaymentDetails = ({visible})=>{
 
             <button className={`${styles.btn_payment}`}>I have paid</button>
 
-            <p><span><img/></span>  Powered by Wema Bank</p>
+            {/* <p><span><img/></span>  Powered by Wema Bank</p> */}
           </div>
         </div>
     )

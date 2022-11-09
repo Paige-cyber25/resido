@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState } from "react";
 import PayWithBankIcon from '../../assets/pay_with_bank.svg';
 import PayStackIcon from '../../assets/paystack.svg';

@@ -5,6 +5,7 @@ import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [navbar, setNavbar] = useState(false);
 
   return (

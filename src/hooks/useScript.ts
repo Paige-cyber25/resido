@@ -15,6 +15,7 @@ const useScript = (url: string, name: string) => {
         return () => {
             document.body.removeChild(script);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [url]);
     
     return lib

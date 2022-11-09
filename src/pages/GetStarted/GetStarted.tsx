@@ -12,6 +12,7 @@ import NumberWithComma from "../../components/helpers/numberWithComma";
 import PaymentModal from "../../components/Modals/PaymentModal";
 
 const GetStarted = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [formValues, setFormValues] = useState(null);
   const [currentFormKey, setCurrentFormKey] = useState(0);
   const [formSteps] = useState([
