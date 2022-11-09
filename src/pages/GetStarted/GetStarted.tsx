@@ -48,12 +48,12 @@ const GetStarted = () => {
     2: "D/SD House",
     3: "Townhouse",
     4: "3+ Bed Apartment"
-};
+  };
 
-const frequencyOptions = {
-  2: "quarterly",
-  3: "yearly"
-}
+  const frequencyOptions = {
+    2: "quarterly",
+    3: "yearly"
+  }
 
   
 
@@ -128,6 +128,7 @@ const frequencyOptions = {
         ),
       }),
       async onSubmit(values: any) {
+
         if (isValid) {
           setFormValues({ ...values });
 
@@ -183,7 +184,7 @@ const frequencyOptions = {
   useEffect(() => {
     getPrice(values.frequency, values.house_type);
   }, [values.frequency, values.house_type]);
-  
+
   const totalAmount = NumberWithComma(price.price * 0.1);
 
   const userWhatsappNumber = values.whatsapp_number;
@@ -520,6 +521,7 @@ const frequencyOptions = {
                       type="filled"
                       bgColor="light_blue"
                       color="dark_blue"
+
                       onClick={renderNextForm}
                       text="Submit"
                       classes="w-32 h-10 md:w-28 xl:w-36 cursor-pointer rounded-md text-sm capitalize text-dark_blue bg-light_blue"
@@ -593,7 +595,7 @@ const frequencyOptions = {
           </div>
         </div>
       )}
-      <PaymentModal {...{ totalAmount, userWhatsappNumber, userEmail, paystackUrl, showPaymentModal }}  visible={showPaymentModal} />
+      <PaymentModal {...{ totalAmount, userWhatsappNumber, userEmail, paystackUrl }} visible={showPaymentModal} />
     </form>
   );
 };

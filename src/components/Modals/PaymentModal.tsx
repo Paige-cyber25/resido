@@ -1,34 +1,18 @@
-import React, { useRef } from "react";
-import PayWithBankIcon from "../../assets/pay_with_bank.svg";
-import PayStackIcon from "../../assets/paystack.svg";
-import { useState } from "react";
+import React, { useState } from "react";
+import PayWithBankIcon from '../../assets/pay_with_bank.svg';
+import PayStackIcon from '../../assets/paystack.svg';
 import axios from "axios";
-import useScript from "../../hooks/useScript";
-import useOnClickOutside from "../../hooks/useOnClickOutside";
-import { toast } from "react-toastify";
+import useScript from '../../hooks/useScript'
 import { useNavigate } from "react-router-dom";
 
-const PaymentModal = ({
-  visible,
-  totalAmount,
-  userWhatsappNumber,
-  userEmail,
-  paystackUrl,
-  showPaymentModal,
-}) => {
-  // const [openBankDetails, setOpenBankDetails] = useState(false);
-  const [openPaystack, setOpenPaystack] = useState(false);
-  // const openModal = () => {
-  //   setOpenBankDetails(true);
-  // };
+const PaymentModal = ({ visible, totalAmount, userWhatsappNumber, userEmail, paystackUrl }) => {
+  const [openPaystack, setOpenPaystack] = useState(false)
+  const navigate = useNavigate()
 
-  const navigate = useNavigate();
-  const { Alatpay } = useScript(
-    "https://alatpay-test.azurewebsites.net/js/alatpay.js",
-    "Alatpay"
-  );
-  const NEXT_PUBLIC_WEMA_API_KEY = "0d296a5575ec4a0895c80d065fa44801";
-  const NEXT_PUBLIC_WEMA_BUSINESS_ID = "348fc803-6a69-4580-e0ce-08daa1211597";
+  const { Alatpay } = useScript("https://alatpay-test.azurewebsites.net/js/alatpay.js", 'Alatpay')
+  const NEXT_PUBLIC_WEMA_API_KEY = "0d296a5575ec4a0895c80d065fa44801"
+  const NEXT_PUBLIC_WEMA_BUSINESS_ID = "348fc803-6a69-4580-e0ce-08daa1211597"
+
 
   const payWithWema = () => {
     let popup = Alatpay?.setup({
@@ -41,60 +25,37 @@ const PaymentModal = ({
       amount: totalAmount,
 
       onTransaction: async function (response) {
-        if (
-          response.data.error ||
-          response.data.message.includes("Error") ||
-          response.data.message.includes("unsuccessful")
-        ) {
-          const { error, message } = response.data;
-
-          let msg = error || message;
-          throw new Error(msg);
-        }
-
-        toast.success("Payment confirmed");
       },
 
-      onClose: function () {},
+      onClose: function () {
+        console.log("Payment gateway is closed");
+      },
     });
 
     popup.show();
   };
 
   function Paystack({ src }: any) {
-    const [isCalled, setIsCalled] = useState(false);
+
+    const [isCalled, setIsCalled] = useState(false)
     const verifyPayment = async () => {
       if (isCalled === false) {
         try {
-          const response = await axios.get(
-            `https://resido-onboarding.herokuapp.com/users/verifypayment/${userWhatsappNumber}`
-          );
-          if (
-            response.data.error ||
-            response.data.message.includes("Error") ||
-            response.data.message.includes("unsuccessful")
-          ) {
-            const { error, message } = response.data;
-    
-            let msg = error || message;
-            throw new Error(msg);
-          }
-    
-          toast.success("Payment confirmed");
-          navigate("/");
+          const response = await axios.get(`https://resido-onboarding.herokuapp.com/users/verifypayment/${userWhatsappNumber}`)
+          navigate('/')
           if (isCalled === false) {
-            setIsCalled(true);
-              window.location.reload();
+            setIsCalled(true)
+
+            console.log(response.data.message, "response...")
+            window.location.reload()
           }
-        } catch (err) {
-          if (err) {
-            console.error(err);
-          }
-    
-          return toast.error('Something went wrong! Ty again');
+
+        } catch (error) {
+          console.error(error)
         }
       }
-    };
+
+    }
 
     if (isCalled === false) {
       window.addEventListener("message", (event) => {
@@ -130,16 +91,12 @@ const PaymentModal = ({
     );
   }
 
-  const ref = useRef(null);
-  // Call hook passing in the ref and a function to call on outside click
-  useOnClickOutside(ref, () => showPaymentModal);
-
+  
   if (!visible) return null;
   if (openPaystack) return <Paystack src={paystackUrl} />;
   return (
     <div
       className="fixed inset-0 bg-black z-20 bg-opacity-25 backdrop-blur-sm flex items-center justify-center"
-      ref={ref}
     >
       <div className="bg-white p-[2.5rem] lg:p-2 rounded w-[20rem] lg:w-[30rem] lg:h-[15rem]">
         <h1 className="font-bold text-center text-xl text-dark_grey pb-[1rem] lg:pb-[2rem] pt-[1rem] lg:pt-[2rem]">
