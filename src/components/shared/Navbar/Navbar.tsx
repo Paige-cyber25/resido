@@ -1,54 +1,78 @@
 import React, { useState } from "react";
 import styles from "./Navbar.module.scss";
 import residoLogo from "../../../assets/resido.svg";
-import Button from "../Button/Button";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faTimes} from '@fortawesome/free-solid-svg-icons';
+ 
 
 const Navbar = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [navbar, setNavbar] = useState(false);
+  
+ const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => {
+    setClicked(!clicked)
+  }
 
   return (
-    <div className={`w-full h-20 fixed top-0 z-50 bg-white`}>
-      <header className="relative z-50 md:w-11/12 xl:w-10/12 mx-auto h-full flex items-center">
-        <Link
-          to="/"
-          className={`w-1/12 h-full flex items-center cursor-pointer w-[6rem]`}
-        >
-          <img
-            src={residoLogo}
-            alt="resido_logo"
-            className={` ${styles.logo_img}`}
-          />
+    <div>
+      <nav className={`flex items-center justify-between bg-white fixed z-50 w-full top-0 ${styles.nav} `}>
+        <Link to='/'>
+          <img src={residoLogo} alt='resido' />
         </Link>
-        <nav
-          className={`flex items-center h-full text-sm text-dark_grey ml-auto
-           ${'md:hidden'+ (navbar ? "flex" : "hidden")
-            
-          }`}
-        >
-          <ul className="flex lg:flex flex-row items-center justify-evenly gap-1 lg:space-x-3 xl:space-x-5">
-            <Link to="/about-us">
-              <li className={``}>About us</li>
+
+        <div>
+          {
+            clicked ? (
+              <ul className={`flex items-center justify-center ${styles.navLinks} `}>
+          <li>
+            <Link to='/about'>About us</Link>
+          </li>
+          <li>
+            <Link to='/service'>Our services</Link>
+          </li>
+          <li>
+            <Link to='/contact'>Contact us</Link>
+          </li>
+          <li>
+            <Link to='/pricing'>
+              <button className={`${styles.btn}`}>Get started</button>
             </Link>
-            <Link to="/service">
-              <li>Our services</li>
-            </Link>
-            <Link to="/contact">
-              <li>Contact Us</li>
-            </Link>
+          </li>
           </ul>
-          <Link to="/pricing">
-            <Button
-              type="filled"
-              bgColor="light_blue"
-              color="white"
-              text="Get started"
-              classes="w-[6rem] lg:w-32 h-10 ml-2 lg:ml-5 md:w-28 xl:w-36 rounded-md text-sm capitalize text-dark_grey bg-light_blue"
-            />
-          </Link>
-        </nav>
-      </header>
+            ) : (
+              <ul className={`flex items-center justify-center ${styles.navLinksActive} `}>
+          <li>
+            <Link to='/about'>About us</Link>
+          </li>
+          <li>
+            <Link to='/service'>Our services</Link>
+          </li>
+          <li>
+            <Link to='/contact'>Contact us</Link>
+          </li>
+          <li>
+            <Link to='/pricing'>
+              <button className={`${styles.btn}`}>Get started</button>
+            </Link>
+          </li>
+          </ul>
+            )
+          }
+          
+        </div>
+
+        <div className={`${styles.mobile}`} onClick={handleClick}>
+          {clicked ? (
+            <FontAwesomeIcon icon={faTimes} className={`${styles.mobileIcons}`} />
+          ) : (
+            <FontAwesomeIcon icon={faBars} className={`${styles.mobileIcons}`} />
+          )}
+          
+          
+        </div>
+      </nav>
     </div>
   );
 };
