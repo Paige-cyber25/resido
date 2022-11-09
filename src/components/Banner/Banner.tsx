@@ -3,6 +3,7 @@ import Button from "../shared/Button/Button";
 import styles from "./Banner.module.scss";
 import bannerEllipse from '../../assets/ellipse_banner.svg';
 import { HomeBackdrop } from "../customisedIcons/HomeBackdrop";
+import { Link } from "react-router-dom";
 
 
 const Banner = () => {
@@ -16,6 +17,7 @@ const Banner = () => {
             Let us care for your home while you focus on your core. Trust us and
             expect your home to get an upgrade with Resido!
           </p>
+          <Link to="/pricing">
           <Button
             type="filled"
             bgColor="light_blue"
@@ -23,6 +25,7 @@ const Banner = () => {
             text="Get started"
             classes="w-32 h-10 ml-0 lg:ml-[9rem] md:w-28 xl:w-36 rounded-md text-sm capitalize text-dark_grey bg-light_blue"
           />
+          </Link>
         </div>
         <div className="z-10">
             <img src={bannerEllipse} alt='ellipse' className={''} />

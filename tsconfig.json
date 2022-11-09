@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "noImplicitReturns": true,
     "noImplicitAny": false,
+    "noImplicitReturns": false,
     "lib": [
       "dom",
       "dom.iterable",

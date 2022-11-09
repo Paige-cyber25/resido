@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./Navbar.module.scss";
 import residoLogo from "../../../assets/resido.svg";
 import Button from "../Button/Button";
-import { Bars3Icon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {

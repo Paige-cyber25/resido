@@ -1,13 +1,12 @@
 import React, { useRef } from "react";
 import PayWithBankIcon from "../../assets/pay_with_bank.svg";
 import PayStackIcon from "../../assets/paystack.svg";
-import styles from "./GetStarted.module.scss";
-import PaymentDetails from "./PaymentDetails";
 import { useState } from "react";
 import axios from "axios";
 import useScript from "../../hooks/useScript";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const PaymentModal = ({
   visible,
@@ -15,9 +14,15 @@ const PaymentModal = ({
   userWhatsappNumber,
   userEmail,
   paystackUrl,
-  showPaymentModal
+  showPaymentModal,
 }) => {
-  
+  // const [openBankDetails, setOpenBankDetails] = useState(false);
+  const [openPaystack, setOpenPaystack] = useState(false);
+  // const openModal = () => {
+  //   setOpenBankDetails(true);
+  // };
+
+  const navigate = useNavigate();
   const { Alatpay } = useScript(
     "https://alatpay-test.azurewebsites.net/js/alatpay.js",
     "Alatpay"
@@ -36,7 +41,6 @@ const PaymentModal = ({
       amount: totalAmount,
 
       onTransaction: async function (response) {
-        
         if (
           response.data.error ||
           response.data.message.includes("Error") ||
@@ -49,23 +53,89 @@ const PaymentModal = ({
         }
 
         toast.success("Payment confirmed");
-
       },
 
-      onClose: function () {
-        console.log("Payment gateway is closed");
-      },
+      onClose: function () {},
     });
 
     popup.show();
   };
 
+  function Paystack({ src }: any) {
+    const [isCalled, setIsCalled] = useState(false);
+    const verifyPayment = async () => {
+      if (isCalled === false) {
+        try {
+          const response = await axios.get(
+            `https://resido-onboarding.herokuapp.com/users/verifypayment/${userWhatsappNumber}`
+          );
+          if (
+            response.data.error ||
+            response.data.message.includes("Error") ||
+            response.data.message.includes("unsuccessful")
+          ) {
+            const { error, message } = response.data;
+    
+            let msg = error || message;
+            throw new Error(msg);
+          }
+    
+          toast.success("Payment confirmed");
+          navigate("/");
+          if (isCalled === false) {
+            setIsCalled(true);
+              window.location.reload();
+          }
+        } catch (err) {
+          if (err) {
+            console.error(err);
+          }
+    
+          return toast.error('Something went wrong! Ty again');
+        }
+      }
+    };
+
+    if (isCalled === false) {
+      window.addEventListener("message", (event) => {
+        if (event.data.data.status) {
+          verifyPayment();
+        }
+      });
+    }
+
+    return (
+      <div
+        style={{
+          position: "fixed",
+          height: "100%",
+          backgroundColor: "#fff",
+          top: 0,
+          left: 0,
+          bottom: 0,
+          right: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <iframe
+          src={src}
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        />
+      </div>
+    );
+  }
+
   const ref = useRef(null);
   // Call hook passing in the ref and a function to call on outside click
-  useOnClickOutside(ref, () => !visible);
-
+  useOnClickOutside(ref, () => showPaymentModal);
 
   if (!visible) return null;
+  if (openPaystack) return <Paystack src={paystackUrl} />;
   return (
     <div
       className="fixed inset-0 bg-black z-20 bg-opacity-25 backdrop-blur-sm flex items-center justify-center"
@@ -76,18 +146,31 @@ const PaymentModal = ({
           Select a Payment Method
         </h1>
 
-
-        <a href={paystackUrl} target="_blank" rel="noreferrer" className='flex cursor-pointer items-center  lg:pl-[2rem] pb-[1rem] lg:pb-[2rem]'>
+        {/* <a href={paystackUrl} target="_blank" rel="noreferrer" className='flex cursor-pointer items-center  lg:pl-[2rem] pb-[1rem] lg:pb-[2rem]'>
           <div className="flex hover:cursor-pointer">
             <div className="">
               <img src={PayStackIcon} alt="" className='pr-[1rem] lg:pr-[2rem]' />
             </div>
             <p>Pay with Paystack</p>
           </div>
-        </a>
+        </a> */}
+
+        <div
+          className='flex cursor-pointer items-center  lg:pl-[2rem] pb-[1rem] lg:pb-[2rem]'
+          onClick={() => setOpenPaystack(true)}
+        >
+          <div className="">
+            <img src={PayStackIcon} alt="" className='pr-[1rem] lg:pr-[2rem]' />
+          </div>
+          <p>Pay with Paystack</p>
+        </div>
         <div className="flex lg:pl-[2rem] cursor-pointer" onClick={payWithWema}>
           <div>
-            <img src={PayWithBankIcon} alt="" className=" pr-[1rem] lg:pr-[2rem]" />
+            <img
+              src={PayWithBankIcon}
+              alt=""
+              className=" pr-[1rem] lg:pr-[2rem]"
+            />
           </div>
           <p>Pay with Bank Transfer</p>
         </div>

@@ -42,7 +42,7 @@ const About = () => {
           <img
             src={leftAboutUs}
             alt="left-about-us"
-            className={`max-w-[12rem] lg:max-w-12rem] ${styles.leftImage}`}
+            className={`lg:max-w-12rem] ${styles.leftImage}`}
           />
           <img
             src={rightAboutUs}

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
 import axios from "axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -13,7 +12,6 @@ import NumberWithComma from "../../components/helpers/numberWithComma";
 import PaymentModal from "../../components/Modals/PaymentModal";
 
 const GetStarted = () => {
-  const navigate = useNavigate();
   const [formValues, setFormValues] = useState(null);
   const [currentFormKey, setCurrentFormKey] = useState(0);
   const [formSteps] = useState([
@@ -31,6 +29,7 @@ const GetStarted = () => {
   const [houseTypes, setHouseTypes] = useState([]);
   const [price, setPrice] = useState<any>({});
   const [showPaymentModal, setShowPaymentModal] = useState<any>(false);
+  const [paystackUrl, setPaystackUrl] = useState<string>()
 
   const isThisForm = (formStepIndex: any) => {
     return currentFormKey === formSteps[formStepIndex].index;
@@ -56,54 +55,10 @@ const frequencyOptions = {
   3: "yearly"
 }
 
-
-
-// const apartmentPrices = {
-//   "House 7+": {
-//     quarterly: 30000,
-//     yearly: 108000,
-//   },
-//   'D/SD House': {
-//     quarterly: 54000,
-//     yearly: 194400,
-//   },
-//   'Townhouse': {
-//     quarterly: 60000,
-//     yearly: 216000,
-//   },
-//   "3+ Bed Apartment": {
-//     quarterly: 75000,
-//     yearly: 270000,
-//   },
-// };
   
 
   const openPaymentModal = () => setShowPaymentModal(true);
 
-  //  let locationValue:any = locations.find((ele)=> ele.value === formValues.location);
-  //  let frequencyValue:any = frequencyOptions.find((ele)=> ele.value === formValues.frequency);
-
-  //  const handleSubmit = () => {
-  //   const allValues = {
-  //     ...formValues,
-  //     amount: prices[formValues.house_type][formValues.frequency],
-  //   };
-
-  //   sessionStorage.setItem("_cachedHouseDetails", JSON.stringify(allValues));
-  //   setDetails(allValues);
-
-  //   return navigate("/confirm-payment");
-  // };
-
-  // useEffect(() => {
-  //   const savedDetails = JSON.parse(
-  //     sessionStorage.getItem("_cachedHouseDetails")as string
-  //   );
-
-  //   if (savedDetails && Object.keys(savedDetails).length) {
-  //     setFormValues({ ...savedDetails });
-  //   }
-  // }, []);
   useEffect(() => {
     getFrequency();
     getHouse();
@@ -186,12 +141,12 @@ const frequencyOptions = {
             house_type: values.house_type,
             amount: price.price,
           };
-
+          console.log(postData)
           try {
             const postRes = await registerUser({ params: postData });
-            console.log(postData);
-            if (postRes) {
-              console.log(postRes);
+            if (postRes.data.user) {
+              setPaystackUrl(postRes.data.authorizationUrl)
+              openPaymentModal()
             }
           } catch ({ error }) {
             console.error(error);
@@ -199,6 +154,29 @@ const frequencyOptions = {
         }
       },
     });
+
+    const onSubmit = async () => {
+      let postData = {
+        name: values.name,
+        email: values.email,
+        location: values.location,
+        whatsapp_number: values.whatsapp_number,
+        alt_whatsapp_number: values.alt_whatsapp_number,
+        frequency: values.frequency,
+        house_type: values.house_type,
+        amount: price.price,
+      };
+  
+      try {
+        const postRes = await registerUser({ params: postData });
+        if (postRes.data.user) {
+          setPaystackUrl(postRes.data.authorizationUrl)
+          openPaymentModal()
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    }
 
   let houseTypeObject: any = Object.assign({}, houseTypes);
 
@@ -445,7 +423,7 @@ const frequencyOptions = {
               Fields marked * are compulsory
             </h5>
             <div
-              className={` mx-[2rem] lg:mx-auto mt-4 lg:mt-2 lg:p-4 ${styles.formContainer}`}
+              className={` mx-[2rem] lg:mx-auto mt-4 lg:mt-2 lg:p-4 lg:mb-[2rem] ${styles.formContainer}`}
             >
               <h4
                 className={`text-center lg:mt-4 text-dark_grey font-semibold pb-2 lg:pb-4 lg:text-xl ${styles.borderBottom}`}
@@ -532,12 +510,12 @@ const frequencyOptions = {
                     href="https://wa.me/2349043284663"
                     target="_blank"
                     rel="noreferrer"
-                    className={`flex gap-2 pl-10 lg:pl-20`}
+                    className={`flex gap-2 pl-5 lg:pl-20`}
                   >
                     <img src={suppportIcon} alt="support" />
                     <p className={`underline text-dark_blue`}>Get support</p>
                   </a>
-                  <div className={`flex items-center pr-10 lg:pr-20`}>
+                  <div className={`flex items-center pr-10 lg:pr-20 `}>
                     <Button
                       type="filled"
                       bgColor="light_blue"
@@ -561,9 +539,9 @@ const frequencyOptions = {
           <div>
             <h5
             onClick={renderPreviousForm}
-              className={`text-left cursor-pointer  pl-64 pt-10 text-dark_grey font-medium mt-20 text-base`}
+              className={`text-left lg:text-left cursor-pointer pl-[3rem] lg:pl-[30rem] pt-10 text-dark_grey font-medium mt-20 text-base`}
             >Back</h5>
-            <div className={` mx-auto mt-2 ${styles.formContainerSummary}`}>
+            <div className={`mx-[2rem] lg:mx-auto mt-2  lg:mt-8 mb-8 ${styles.formContainerSummary}`}>
               <div className={`${styles.flexBox} ${styles.headerSummary}`}>
                 <h2>Total (Vat Inclusive)</h2>
                 <h2 className={`${styles.medium_text_bold}`}>₦{NumberWithComma(price.price * 0.1)}</h2>
@@ -605,8 +583,8 @@ const frequencyOptions = {
               <h3 className={`capitalize ${styles.medium_text}`}>{frequencyOptions[String(values.frequency)]}</h3>
 
               <button
-                type="button"
-                onClick={openPaymentModal}
+                type="submit"
+                onClick={onSubmit}
                 className={`${styles.btn_payment}`}
               >
                 Pay ₦{NumberWithComma(price.price * 0.1)}
@@ -615,7 +593,7 @@ const frequencyOptions = {
           </div>
         </div>
       )}
-      <PaymentModal {...{totalAmount, userWhatsappNumber, userEmail}}  visible={showPaymentModal} />
+      <PaymentModal {...{ totalAmount, userWhatsappNumber, userEmail, paystackUrl, showPaymentModal }}  visible={showPaymentModal} />
     </form>
   );
 };
