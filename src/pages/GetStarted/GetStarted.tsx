@@ -475,7 +475,7 @@ const GetStarted = () => {
                 />
               </div>
 
-              <div className={`lg:mt-8 mb-4 lg:mb-8 ml-[3rem] lg:ml-[5rem]`}>
+              <div className={`lg:mt-8 mb-4 lg:mb-8 ml-[1rem] lg:ml-[5rem]`}>
                 <label className={``}>Email*</label>
                 <br />
                 <input
