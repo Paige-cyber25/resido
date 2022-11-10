@@ -15,7 +15,7 @@ import Accordion from "../shared/Accordion/Accordion";
 
 const MainContent = () => {
   return (
-    <div className={`bg-white w-full p-5 md:p-28 h-[4300px] lg:max-h-[3262px] ${styles.mainContentWrapper}`}>
+    <div className={`bg-white w-full p-5 md:p-28 h-[4400px] lg:max-h-[3262px] ${styles.mainContentWrapper}`}>
       <h2 className="text-dark_grey font-semibold text-2xl lg:text-4xl md:text-2xl mb-6 text-center mt-[3rem] lg:mt-0">
         Easy and efficient home management service at your reach
       </h2>
@@ -237,21 +237,22 @@ const MainContent = () => {
         <input
           type="text"
           placeholder="Enter your location"
-          className={`mb-[2rem] lg:float-right block ml-auto mr-auto lg:ml-[21rem] p-2 lg:p-4 pr-[10rem] lg:pr-[10rem] ${styles.input}`}
+          className={`mb-[2rem] lg:float-right block ml-auto mr-auto lg:ml-[21rem] p-2 lg:p-4 pr-[6rem] lg:pr-[10rem] ${styles.input}`}
         />
         <div className={`flex w-full items-center justify-end gap-[1rem]`}>
         <input
           type="text"
           placeholder="Enter your email address"
-          className={` block p-[.8rem] lg:p-4 pr-[3rem] lg:pr-[4rem] ${styles.emailInput}`}
+          className={` block p-[.8rem] lg:p-4 pr-[3rem] lg:pr-[5rem] ${styles.emailInput}`}
         />
         <div
-        className={` block cursor-pointer w-20 lg:h-[3.3rem] p-0.5 mr-[2rem] lg:mr-0 ${styles.whiteArrowRightWrapper}`}
+        className={` block cursor-pointer lg:w-[4rem] lg:h-[3.3rem] p-0.5 ${styles.whiteArrowRightWrapper}`}
       >
         <img
           src={whiteRightArrow}
           alt="white_arrow_right"
-          className={`object-none object-center text-center w-6 ${styles.whiteArrowRight}`}
+          className={`object-none object-center text-center w-[28px] lg:w-6
+          h-[23px]  ${styles.whiteArrowRight}`}
         />
         </div>
         </div>
