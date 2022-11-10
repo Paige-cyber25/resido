@@ -31,7 +31,7 @@ const Carousel = () => {
                 Generator servicing
               </h2>
               <p
-                className={`mx-auto mt-3 text-center font-light text-xl w-96 lg:w-[50rem]  text-dark_grey`}
+                className={`mx-auto mt-3 text-center font-light lg:text-xl max-w-96 lg:w-[50rem]  text-dark_grey`}
               >
                 We offer 24 hours generator servicing and repairs for all types
                 of generator sets. We replace worn-out parts and carry out
@@ -52,7 +52,7 @@ const Carousel = () => {
             <div className={`mx-auto mt-20 text-center`}>
               <h2 className={`font-semibold text-dark_black mt-20 text-xl`}>Electrical servicing & installation</h2>
               <p
-                className={`mx-auto mt-3 text-center font-light  text-xl w-96 lg:w-[50rem]  text-dark_grey`}
+                className={`mx-auto mt-3 text-center font-light  text-xl max-w-96 lg:w-[50rem]  text-dark_grey`}
               >
                 We carry out our maintenance and installation of electrical
                 units. We also source quality electrical materials for our
@@ -74,7 +74,7 @@ const Carousel = () => {
             <div className={`mx-auto mt-20 text-center`}>
               <h2 className={`font-semibold text-dark_black mt-20 text-xl`}>Plumbing services</h2>
               <p
-                className={`mx-auto mt-3 text-center font-light text-xl w-96 lg:w-[50rem]  text-dark_grey`}
+                className={`mx-auto mt-3 text-center font-light text-xl max-w-96 lg:w-[50rem]  text-dark_grey`}
               >
                 We perform routine checks and plumbing fixes, engaging
                 authorised vendors for quality plumbing materials. We install
@@ -96,7 +96,7 @@ const Carousel = () => {
             <div className={`mx-auto mt-20 text-center`}>
               <h2 className={`font-semibold text-dark_black mt-20 text-xl`}>Swimming pool maintenance</h2>
               <p
-                className={`mx-auto mt-3 text-center font-light text-xl w-96 lg:w-[50rem]  text-dark_grey`}
+                className={`mx-auto mt-3 text-center font-light text-xl max-w-96 lg:w-[50rem]  text-dark_grey`}
               >
                 We offer swimming pool maintenace services that helps to
                 maintenace a hygienic swimming pool. We clear debris, maintain
@@ -118,7 +118,7 @@ const Carousel = () => {
             <div className={`mx-auto mt-20 text-center`}>
               <h2 className={`font-semibold text-dark_black mt-20 text-xl`}>Cleaning & fumigation services</h2>
               <p
-                className={`mx-auto mt-3 text-center font-light text-xl w-96 lg:w-[50rem]  text-dark_grey`}
+                className={`mx-auto mt-3 text-center font-light text-xl max-w-96 lg:w-[50rem]  text-dark_grey`}
               >
                 We polish, sanitise, and remove waste, oil and other grimes from
                 walls and ceilings. We use non-toxic cleaning products to clean
