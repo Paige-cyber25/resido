@@ -452,7 +452,7 @@ const GetStarted = () => {
             </div>
 
             <div
-              className={` mx-[2rem] lg:mx-auto mt-4 lg:mt-2 lg:p-4 lg:mb-[2rem] ${styles.formContainer}`}
+              className={` mx-[1rem] lg:mx-auto mt-4 lg:mt-2 lg:p-4 lg:mb-[2rem] ${styles.formContainer}`}
             >
               <h4
                 className={`text-center lg:mt-4 text-dark_grey font-semibold pt-2 lg:pt-0 pb-2 lg:pb-4 lg:text-xl ${styles.borderBottom}`}
