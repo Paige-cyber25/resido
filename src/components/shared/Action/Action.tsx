@@ -5,7 +5,7 @@ import styles from './Action.module.scss';
 
 const Action = () => {
   return (
-    <div className={`bg-light_blue w-full h-[25rem] lg:p-[5rem]`}>
+    <div className={`bg-light_blue w-full h-[18rem] lg:h-[25rem] lg:p-[5rem]`}>
       <h2 className={`mx-auto text-xl lg:text-4xl lg:w-[1048px] text-dark_black font-semibold text-center ${styles.actionHeader}`}>
         You’re just a click away from your RESIDO experience. Let’s manage your
         home today!

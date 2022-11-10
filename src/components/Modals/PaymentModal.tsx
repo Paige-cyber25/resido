@@ -6,7 +6,7 @@ import axios from "axios";
 import useScript from '../../hooks/useScript'
 import { useNavigate } from "react-router-dom";
 
-const PaymentModal = ({ visible, totalAmount, userWhatsappNumber, userEmail, paystackUrl }) => {
+const PaymentModal = ({ visible, totalAmount, userWhatsappNumber, userEmail, paystackUrl, closePaymentModal }) => {
   const [openPaystack, setOpenPaystack] = useState(false)
   const navigate = useNavigate()
 
@@ -100,10 +100,13 @@ const PaymentModal = ({ visible, totalAmount, userWhatsappNumber, userEmail, pay
       className="fixed inset-0 bg-black z-20 bg-opacity-25 backdrop-blur-sm flex items-center justify-center"
     >
       <div className="bg-white p-[2.5rem] lg:p-2 rounded w-[20rem] lg:w-[30rem] lg:h-[15rem]">
-        <h1 className="font-bold text-center text-xl text-dark_grey pb-[1rem] lg:pb-[2rem] pt-[1rem] lg:pt-[2rem]">
+        <div className='flex flex-row items-center justify-between lg:justify-evenly'>
+        <h1 className="font-bold text-[.9rem] lg:text-lg text-dark_grey pb-[1rem] lg:pb-[2rem] pt-[1rem] lg:pt-[2rem]">
           Select a Payment Method
         </h1>
-
+        <button className='text-[.9rem] lg:text-lg cursor-pointer text-[#d30000]' onClick={closePaymentModal}>Cancel</button>
+        </div>
+       
         {/* <a href={paystackUrl} target="_blank" rel="noreferrer" className='flex cursor-pointer items-center  lg:pl-[2rem] pb-[1rem] lg:pb-[2rem]'>
           <div className="flex hover:cursor-pointer">
             <div className="">
@@ -114,7 +117,7 @@ const PaymentModal = ({ visible, totalAmount, userWhatsappNumber, userEmail, pay
         </a> */}
 
         <div
-          className='flex cursor-pointer items-center  lg:pl-[2rem] pb-[1rem] lg:pb-[2rem]'
+          className='flex cursor-pointer items-center lg:pl-[2rem] pb-[1rem] lg:pb-[2rem]'
           onClick={() => setOpenPaystack(true)}
         >
           <div className="">

@@ -15,8 +15,8 @@ import Accordion from "../shared/Accordion/Accordion";
 
 const MainContent = () => {
   return (
-    <div className={`bg-white w-full p-5 md:p-28 h-full lg:max-h-[3262px] ${styles.mainContentWrapper}`}>
-      <h2 className="text-dark_grey font-semibold lg:text-4xl md:text-2xl mb-6 text-center">
+    <div className={`bg-white w-full p-5 md:p-28 h-[4300px] lg:max-h-[3262px] ${styles.mainContentWrapper}`}>
+      <h2 className="text-dark_grey font-semibold text-2xl lg:text-4xl md:text-2xl mb-6 text-center mt-[3rem] lg:mt-0">
         Easy and efficient home management service at your reach
       </h2>
       <p
@@ -141,11 +141,11 @@ const MainContent = () => {
         </div>
       </div>
       <div className="mt-20">
-        <h2 className="text-dark_grey font-normal lg:text-4xl md:text-2xl mb-[1rem] text-center">
+        <h2 className="text-dark_grey font-normal text-3xl lg:text-4xl md:text-2xl mb-[1rem] text-center">
           Resido
         </h2>
         <p
-          className={`text-dark_grey font-light lg:text-xl md:text-sm mx-auto text-center ${styles.residoSubHeader}`}
+          className={`text-dark_grey font-light text-base lg:text-xl md:text-sm mx-auto text-center ${styles.residoSubHeader}`}
         >
           Professional and accessible home management services at your
           fingertips.
@@ -226,27 +226,27 @@ const MainContent = () => {
           Could use our service?
         </h2>
         <p
-          className={`font-light text-dark_grey text-left lg:float-right lg:mb-8 lg:text-xl ${styles.customerContent}`}
+          className={`font-light ml-[2rem] lg:ml-0 text-dark_grey text-left lg:float-right lg:mb-8 lg:text-xl ${styles.customerContent}`}
         >
           Send us a quick message and we’ll be where you need us in no time.
         </p>
       </div>
       <form
-        className={`mt-24 lg:ml-[20rem] lg:mb-[20rem] ${styles.inputWrapper}`}
+        className={`mt-[3rem] lg:mt-24 lg:ml-[20rem] lg:mb-[20rem] mr-[3rem] lg:mr-0 ${styles.inputWrapper}`}
       >
         <input
           type="text"
           placeholder="Enter your location"
-          className={`mb-[2rem] lg:float-right block ml-auto mr-auto lg:ml-[21rem] p-2 lg:p-4 lg:pr-[10rem] ${styles.input}`}
+          className={`mb-[2rem] lg:float-right block ml-auto mr-auto lg:ml-[21rem] p-2 lg:p-4 pr-[10rem] lg:pr-[10rem] ${styles.input}`}
         />
         <div className={`flex w-full items-center justify-end gap-[1rem]`}>
         <input
           type="text"
           placeholder="Enter your email address"
-          className={` block p-[.8rem] lg:p-4 lg:pr-[4rem] ${styles.emailInput}`}
+          className={` block p-[.8rem] lg:p-4 pr-[3rem] lg:pr-[4rem] ${styles.emailInput}`}
         />
         <div
-        className={` block cursor-pointer w-20 lg:h-[3.3rem] p-0.5 ${styles.whiteArrowRightWrapper}`}
+        className={` block cursor-pointer w-20 lg:h-[3.3rem] p-0.5 mr-[2rem] lg:mr-0 ${styles.whiteArrowRightWrapper}`}
       >
         <img
           src={whiteRightArrow}

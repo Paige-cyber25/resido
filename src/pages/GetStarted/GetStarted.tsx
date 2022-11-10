@@ -57,6 +57,7 @@ const GetStarted = () => {
   };
 
   const openPaymentModal = () => setShowPaymentModal(true);
+  const closePaymentModal = () => setShowPaymentModal(false)
 
   useEffect(() => {
     getFrequency();
@@ -189,7 +190,7 @@ const GetStarted = () => {
   const userEmail = values.email;
   return (
     <form
-      className={`bg-light_grey w-full max-h-[82rem] lg:max-h-[70rem]`}
+      className={`bg-light_grey w-full max-h-[84rem] lg:max-h-[70rem]`}
       onSubmit={handleSubmit}
     >
       {/** Housing Info */}
@@ -393,7 +394,7 @@ const GetStarted = () => {
                   </div>
                 </div>
               </div>
-              <p className={`p-8 text-yellow font-medium`}>
+              <p className={`p-8 text-yellow font-medium text-[13px] lg:text-[16px]`}>
                 **Get 10% discount on a one-year plan
               </p>
             </div>
@@ -438,13 +439,13 @@ const GetStarted = () => {
             <div className={`flex items-center justify-between`}>
               <h5
                 onClick={renderPreviousForm}
-                className={`text-left lg:text-left cursor-pointer pl-[3rem] lg:pl-[16rem] pt-10 text-dark_grey font-medium lg:mt-20 text-base`}
+                className={`text-left lg:text-left cursor-pointer pl-[3rem] lg:pl-[16rem] pt-10 text-dark_grey text-sm font-medium lg:mt-20 lg:text-base`}
               >
                 Back
               </h5>
 
               <h5
-                className={`text-center lg:text-right lg:pr-64 pt-10 text-dark_grey font-medium lg:mt-20 text-base`}
+                className={`text-center lg:text-right pr-[2rem] lg:pr-64 pt-10 text-dark_grey font-medium lg:mt-20 text-sm lg:text-base`}
               >
                 Fields marked * are compulsory
               </h5>
@@ -454,7 +455,7 @@ const GetStarted = () => {
               className={` mx-[2rem] lg:mx-auto mt-4 lg:mt-2 lg:p-4 lg:mb-[2rem] ${styles.formContainer}`}
             >
               <h4
-                className={`text-center lg:mt-4 text-dark_grey font-semibold pb-2 lg:pb-4 lg:text-xl ${styles.borderBottom}`}
+                className={`text-center lg:mt-4 text-dark_grey font-semibold pt-2 lg:pt-0 pb-2 lg:pb-4 lg:text-xl ${styles.borderBottom}`}
               >
                 Personal info
               </h4>
@@ -532,13 +533,13 @@ const GetStarted = () => {
                 />
 
                 <div
-                  className={` mt-8 lg:mt-8 mb-8 flex flex-cols items-center justify-between`}
+                  className={` mt-8 lg:mt-8 mb-8 flex flex-col lg:flex-row items-center justify-center lg:justify-between`}
                 >
                   <a
                     href="https://wa.me/2349043284663"
                     target="_blank"
                     rel="noreferrer"
-                    className={`flex gap-2 pl-5 lg:pl-20`}
+                    className={`flex gap-2 pl-5 lg:pl-20 pr-[5rem] lg:pr-0 mb-[2rem] lg:mb-0`}
                   >
                     <img src={suppportIcon} alt="support" />
                     <p className={`underline text-dark_blue`}>Get support</p>
@@ -629,7 +630,7 @@ const GetStarted = () => {
         </div>
       )}
       <PaymentModal
-        {...{ totalAmount, userWhatsappNumber, userEmail, paystackUrl }}
+        {...{ totalAmount, userWhatsappNumber, userEmail, paystackUrl, closePaymentModal }}
         visible={showPaymentModal}
       />
     </form>
