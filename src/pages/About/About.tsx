@@ -2,7 +2,7 @@ import React from "react";
 import Action from "../../components/shared/Action/Action";
 import { Cards } from "../../components/shared/Cards/Cards";
 import styles from "./About.module.scss";
-import leftAboutUs from "../../assets/about-us-left-image.svg";
+import leftAboutUs from "../../assets/about-us-left-image.png";
 import rightAboutUs from "../../assets/about-us-right-image.png";
 
 const About = () => {

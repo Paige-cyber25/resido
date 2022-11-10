@@ -186,7 +186,7 @@ const GetStarted = () => {
     getPrice(values.frequency, values.house_type);
   }, [values.frequency, values.house_type]);
 
-  const totalAmount = NumberWithComma(price.price * 0.1);
+  const totalAmount = NumberWithComma(price.price);
 
   const userWhatsappNumber = values.whatsapp_number;
 
@@ -304,7 +304,7 @@ const GetStarted = () => {
             </div>
 
             <div
-              className={`mx-[2rem] lg:mx-auto mt-10 h-[28rem] lg:h-[20rem] ${styles.secondChoiceWrapper}`}
+              className={`mx-[2rem] lg:mx-auto mt-10 h-[28rem] lg:h-[22rem] ${styles.secondChoiceWrapper}`}
             >
               <p
                 className={`text-center font-normal text-dark_grey pt-6 lg:text-lg pb-2 ${styles.borderBottom} `}
@@ -544,7 +544,7 @@ const GetStarted = () => {
             <div className={`mx-[2rem] lg:mx-auto mt-2  lg:mt-8 mb-8 ${styles.formContainerSummary}`}>
               <div className={`${styles.flexBox} ${styles.headerSummary}`}>
                 <h2>Total (Vat Inclusive)</h2>
-                <h2 className={`${styles.medium_text_bold}`}>₦{NumberWithComma(price.price * 0.1)}</h2>
+                <h2 className={`${styles.medium_text_bold}`}>₦{NumberWithComma(price.price)}</h2>
               </div>
               <h2 className={`${styles.medium_text_bold}`}>Breakdown</h2>
               <div>
@@ -557,17 +557,20 @@ const GetStarted = () => {
                 </div>
               </div>
 
-              <div>
+              {frequencyOptions[String(values.frequency)] === frequencyOptions['3'] ? (
+                <div>
                 <h3 className={`${styles.medium_text}`}>Discount</h3>
                 <div className={`${styles.flexBox}`}>
                   <p className={`${styles.medium_text} ${styles.discount}`}>
                     10% off
                   </p>
-                  <p className={`${styles.medium_text} ${styles.discount_fee}`}>
-                    -₦1,000
-                  </p>
                 </div>
               </div>
+              )
+              : 
+              null
+            }
+              
 
               <div className={`${styles.flexBox}`}>
                 <p className={`${styles.title_sub_text}`}>Location</p>
@@ -587,7 +590,7 @@ const GetStarted = () => {
                 onClick={onSubmit}
                 className={`${styles.btn_payment}`}
               >
-                Pay ₦{NumberWithComma(price.price * 0.1)}
+                Pay ₦{NumberWithComma(price.price)}
               </button>
             </div>
           </div>
