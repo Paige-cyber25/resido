@@ -452,7 +452,7 @@ const GetStarted = () => {
             </div>
 
             <div
-              className={` mx-[1rem] lg:mx-auto mt-4 lg:mt-2 lg:p-4 lg:mb-[2rem] ${styles.formContainer}`}
+              className={` mx-[2rem] lg:mx-auto mt-4 lg:mt-2 lg:p-4 lg:mb-[2rem] ${styles.formContainer}`}
             >
               <h4
                 className={`text-center lg:mt-4 text-dark_grey font-semibold pt-2 lg:pt-0 pb-2 lg:pb-4 lg:text-xl ${styles.borderBottom}`}
@@ -461,7 +461,7 @@ const GetStarted = () => {
               </h4>
 
               <div
-                className={`mt-8 lg:mt-8 mb-4 lg:mb-8 ml-[3rem] lg:ml-[5rem]`}
+                className={`mt-8 lg:mt-8 mb-4 lg:mb-8 ml-[1rem] lg:ml-[5rem]`}
               >
                 <label className={`mb-8`}>Full name*</label>
                 <br />
@@ -488,7 +488,7 @@ const GetStarted = () => {
                 />
               </div>
 
-              <div className={`lg:mt-8 mb-4 lg:mb-8 ml-[3rem] lg:ml-[5rem]`}>
+              <div className={`lg:mt-8 mb-4 lg:mb-8 ml-[1rem] lg:ml-[5rem]`}>
                 <label className={``}>Home address*</label>
                 <br />
                 <input
@@ -503,7 +503,7 @@ const GetStarted = () => {
                 />
               </div>
 
-              <div className={`lg:mt-8 mb-4 lg:mb-8 ml-[3rem] lg:ml-[5rem]`}>
+              <div className={`lg:mt-8 mb-4 lg:mb-8 ml-[1rem] lg:ml-[5rem]`}>
                 <label className={``}>Whatsapp number*</label>
                 <br />
                 <input
@@ -518,7 +518,7 @@ const GetStarted = () => {
                 />
               </div>
 
-              <div className={`lg:mt-8 mb-4 lg:mb-8 ml-[3rem] lg:ml-[5rem]`}>
+              <div className={`lg:mt-8 mb-4 lg:mb-8 ml-[1rem] lg:ml-[5rem]`}>
                 <label className={``}>Alternate Whatsapp number</label>
                 <br />
                 <input
