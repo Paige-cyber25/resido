@@ -239,7 +239,7 @@ const MainContent = () => {
           placeholder="Enter your location"
           className={`mb-[2rem] lg:float-right block ml-auto mr-auto lg:ml-[21rem] p-2 lg:p-4 pr-[5.9rem] lg:pr-[10rem] ${styles.input}`}
         />
-        <div className={`flex w-full items-center justify-end gap-[1rem] ml-[3.2rem] lg:ml-0`}>
+        <div className={`flex w-full items-center justify-end  gap-[.5rem] lg:gap-[1rem] ml-[3.2rem] lg:ml-0`}>
         <input
           type="text"
           placeholder="Enter your email address"
