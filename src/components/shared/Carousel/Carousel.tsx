@@ -26,7 +26,7 @@ const Carousel = () => {
                 className={`mx-auto  mt-[1rem] lg:mt-10 ${styles.servicesImage}`}
               />
             </div>
-            <div className={`mx-auto mt-20 text-center`}>
+            <div className={`mx-auto mt-20 lg:mt-[3rem] text-center`}>
               <h2 className={`font-semibold text-dark_black mt-[1rem] lg:mt-20 text-xl`}>
                 Generator servicing
               </h2>
@@ -49,7 +49,7 @@ const Carousel = () => {
                 className={`mx-auto mt-[1rem] lg:mt-10 ${styles.servicesImage}`}
               />
             </div>
-            <div className={`mx-auto mt-20 text-center`}>
+            <div className={`mx-auto mt-20 lg:mt-[3rem] text-center`}>
               <h2 className={`font-semibold text-dark_black mt-[1rem] lg:mt-20 text-xl`}>Electrical servicing & installation</h2>
               <p
                 className={`mx-auto mt-3 text-center font-light  lg:text-xl max-w-96 lg:w-[50rem]  text-dark_grey`}
@@ -71,7 +71,7 @@ const Carousel = () => {
                 className={`mx-auto mt-[1rem] lg:mt-10 ${styles.servicesImage}`}
               />
             </div>
-            <div className={`mx-auto mt-20 text-center`}>
+            <div className={`mx-auto mt-20 lg:mt-[3rem] text-center`}>
               <h2 className={`font-semibold text-dark_black mt-[1rem] lg:mt-20 text-xl`}>Plumbing services</h2>
               <p
                 className={`mx-auto mt-3 text-center font-light lg:text-xl max-w-96 lg:w-[50rem]  text-dark_grey`}
@@ -93,7 +93,7 @@ const Carousel = () => {
                 className={`mx-auto mt-[1rem] lg:mt-10 ${styles.servicesImage}`}
               />
             </div>
-            <div className={`mx-auto mt-20 text-center`}>
+            <div className={`mx-auto mt-20 lg:mt-[3rem] text-center`}>
               <h2 className={`font-semibold text-dark_black mt-[1rem] lg:mt-20 text-xl`}>Swimming pool maintenance</h2>
               <p
                 className={`mx-auto mt-3 text-center font-light lg:text-xl max-w-96 lg:w-[50rem]  text-dark_grey`}
@@ -115,7 +115,7 @@ const Carousel = () => {
                 className={`mx-auto mt-[1rem] lg:mt-10 ${styles.servicesImage}`}
               />
             </div>
-            <div className={`mx-auto mt-20 text-center`}>
+            <div className={`mx-auto mt-20 lg:mt-[3rem] text-center`}>
               <h2 className={`font-semibold text-dark_black mt-[1rem] lg:mt-20 text-xl`}>Cleaning & fumigation services</h2>
               <p
                 className={`mx-auto mt-3 text-center font-light lg:text-xl max-w-96 lg:w-[50rem]  text-dark_grey`}
@@ -133,7 +133,7 @@ const Carousel = () => {
               <img
                 src={gardeningIcon}
                 alt="generator-service"
-                className={`mx-auto mt-10 ${styles.servicesImage}`}
+                className={`mx-auto mt-10 lg:mt-[3rem] ${styles.servicesImage}`}
               />
             </div>
             <div className={`mx-auto mt-[1rem] lg:mt-10 text-center`}>
