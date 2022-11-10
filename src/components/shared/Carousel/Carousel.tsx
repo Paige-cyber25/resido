@@ -23,7 +23,7 @@ const Carousel = () => {
               <img
                 src={generatorServiceIcon}
                 alt="generator-service"
-                className={`mx-auto mt-10 ${styles.servicesImage}`}
+                className={`mx-auto  mt-[1rem] lg:mt-10 ${styles.servicesImage}`}
               />
             </div>
             <div className={`mx-auto mt-20 text-center`}>
@@ -46,7 +46,7 @@ const Carousel = () => {
               <img
                 src={electricalIcon}
                 alt="generator-service"
-                className={`mx-auto mt-10 ${styles.servicesImage}`}
+                className={`mx-auto mt-[1rem] lg:mt-10 ${styles.servicesImage}`}
               />
             </div>
             <div className={`mx-auto mt-20 text-center`}>
@@ -68,7 +68,7 @@ const Carousel = () => {
               <img
                 src={plumbingIcon}
                 alt="generator-service"
-                className={`mx-auto mt-10 ${styles.servicesImage}`}
+                className={`mx-auto mt-[1rem] lg:mt-10 ${styles.servicesImage}`}
               />
             </div>
             <div className={`mx-auto mt-20 text-center`}>
@@ -90,7 +90,7 @@ const Carousel = () => {
               <img
                 src={swimmingIcon}
                 alt="generator-service"
-                className={`mx-auto mt-10 ${styles.servicesImage}`}
+                className={`mx-auto mt-[1rem] lg:mt-10 ${styles.servicesImage}`}
               />
             </div>
             <div className={`mx-auto mt-20 text-center`}>
@@ -112,7 +112,7 @@ const Carousel = () => {
               <img
                 src={cleaningIcon}
                 alt="generator-service"
-                className={`mx-auto mt-10 ${styles.servicesImage}`}
+                className={`mx-auto mt-[1rem] lg:mt-10 ${styles.servicesImage}`}
               />
             </div>
             <div className={`mx-auto mt-20 text-center`}>
@@ -136,7 +136,7 @@ const Carousel = () => {
                 className={`mx-auto mt-10 ${styles.servicesImage}`}
               />
             </div>
-            <div className={`mx-auto mt-20 text-center`}>
+            <div className={`mx-auto mt-[1rem] lg:mt-10 text-center`}>
               <h2 className={`font-semibold text-dark_black mt-[1rem] lg:mt-20 text-xl`}>Gardening services</h2>
               <p
                 className={`mx-auto mt-3 text-center font-light lg:text-xl lg:w-96 lg:w-[50rem]  text-dark_grey`}
