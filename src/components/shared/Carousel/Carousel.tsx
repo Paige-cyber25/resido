@@ -150,7 +150,7 @@ const Carousel = () => {
         </Slide>
       </Slider>
       <div
-        className={`flex flex-row justify-center absolute top-[70%] lg:top-[75%] left-[38%] lg:left-[46%]`}
+        className={`flex flex-row justify-center absolute top-[65%] lg:top-[75%] left-[38%] lg:left-[46%]`}
       >
         <Dot slide={0}>
           <div></div>

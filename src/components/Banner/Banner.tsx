@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <div className="bg-light_yellow py-20 lg:py-0 px-5 overflow-hidden w-full relative flex flex-col lg:flex-row items-center justify-around lg:pt-[3rem] mt-[43px]">
+    <div className="bg-light_yellow py-20 lg:py-0 px-5 overflow-hidden w-full relative flex flex-col lg:flex-row items-center justify-around lg:pt-[3rem] lg:mt-[43px]">
         <div className='text-center lg:text-left lg:pt-[77px] pb-20 lg:pb-[150px] z-10'>
-          <h1 className={`text-dark_black max-w-[37rem] m-auto lg:mr-auto  ${styles.header}`}>
+          <h1 className={`text-dark_black max-w-[37rem] m-auto lg:mr-auto lg:pt-[4rem]  ${styles.header}`}>
             Quick and easy home management solutions just for you
           </h1>
           <p className={`mb-[3rem] text-dark_black max-w-[589px]  pl-0  ${styles.p}`}>
@@ -30,7 +30,7 @@ const Banner = () => {
         <div className="z-10">
             <img src={bannerEllipse} alt='ellipse' className={''} />
         </div>
-        <div className="absolute hidden lg:block right-0 ">
+        <div className="absolute hidden lg:block right-0 top-[3.2rem] ">
         <HomeBackdrop />
         </div>
     </div>

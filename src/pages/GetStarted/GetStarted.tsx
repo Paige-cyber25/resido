@@ -193,14 +193,14 @@ const GetStarted = () => {
   const userEmail = values.email;
   return (
     <form
-      className={`bg-light_grey w-full ${styles.getStartedContainer}`}
+      className={`bg-light_grey w-full max-h-[82rem] lg:max-h-[70rem]`}
       onSubmit={handleSubmit}
     >
       {/** Housing Info */}
       {isThisForm(0) && (
         <>
           <div>
-            <h2 className="text-dark_grey font-semibold mt-20 px-[2rem] text-xl lg:text-3xl mx-auto pt-[4rem] lg:pt-[4rem] text-center">
+            <h2 className="text-dark_grey font-semibold lg:mt-20 px-[2rem] text-xl lg:text-3xl mx-auto pt-[4rem] lg:pt-[4rem] text-center">
               At Resido, we give value for your money
             </h2>
             <p
@@ -210,7 +210,7 @@ const GetStarted = () => {
             </p>
 
             <div
-              className={`mx-[2rem] lg:mx-auto mt-10 ${styles.firstWrapper}`}
+              className={`mx-[2rem] lg:mx-auto mt-10 h-[23rem] lg:h-[15rem] ${styles.firstWrapper}`}
             >
               <p
                 className={`text-center font-normal text-dark_grey pt-4 lg:text-lg `}
@@ -218,9 +218,9 @@ const GetStarted = () => {
                 Which of this best describes your home?
               </p>
               <div className="grid grid-cols-2 auto-rows-[0, 2fr] lg:ml-[2rem] lg:gap-[1.75rem]"></div>
-              <div className={`inline-flex w-full justify-center pt-8`}>
-                <div className={`${styles.homeContainer}`}>
-                  <div className={`${styles.divider}`}>
+              <div className={`flex flex-col lg:flex-row w-full justify-center pt-8 ml-[1rem] lg:ml-0` }>
+                <div className={`w-[85%] lg:w-[45%] ${styles.homeContainer}`}>
+                  <div className={`w-[100%] lg:w-[95%] mb-[2rem] lg:mb-0 ${styles.divider}`}>
                     <div className={`p-2 ${styles.inputField}`}>
                       <input
                         type="checkbox"
@@ -240,8 +240,8 @@ const GetStarted = () => {
                     </div>
                   </div>
                 </div>
-                <div className={`${styles.homeContainer}`}>
-                  <div className={` p-2 ${styles.inputField}`}>
+                <div className={`w-[85%] lg:w-[45%] ${styles.homeContainer}`}>
+                  <div className={` p-2 w-[100%] ${styles.inputField}`}>
                     <input
                       type="checkbox"
                       className={`ml-2 lg:ml-6`}
@@ -259,9 +259,9 @@ const GetStarted = () => {
                 </div>
               </div>
 
-              <div className={`inline-flex w-full justify-center pt-8`}>
-                <div className={`${styles.homeContainer}`}>
-                  <div className={`${styles.divider}`}>
+              <div className={`inline-flex flex-col lg:flex-row w-full justify-center pt-8 ml-[1rem] lg:ml-0`}>
+                <div className={`w-[85%] lg:w-[45%] ${styles.homeContainer}`}>
+                  <div className={`w-[100%] lg:w-[95%] mb-[2rem] lg:mb-0 ${styles.divider}`}>
                     <div className={`p-2 ${styles.inputField}`}>
                       <input
                         type="checkbox"
@@ -281,8 +281,8 @@ const GetStarted = () => {
                     </div>
                   </div>
                 </div>
-                <div className={`${styles.homeContainer}`}>
-                  <div className={` p-2 ${styles.inputField}`}>
+                <div className={`w-[85%] lg:w-[45%] ${styles.homeContainer}`}>
+                  <div className={` p-2 w-[100%] ${styles.inputField}`}>
                     <input
                       type="checkbox"
                       className={`ml-1 lg:ml-6`}
@@ -294,7 +294,7 @@ const GetStarted = () => {
                       }
                     />
                     <label
-                      className={`text-dark_grey font-light pl-[0.1rem] lg:pl-6`}
+                      className={`text-dark_grey font-light pl-4 lg:pl-6`}
                     >
                       {houseTypeObject?.[3]?.name}
                     </label>
@@ -304,7 +304,7 @@ const GetStarted = () => {
             </div>
 
             <div
-              className={`mx-[2rem] lg:mx-auto mt-10 ${styles.secondChoiceWrapper}`}
+              className={`mx-[2rem] lg:mx-auto mt-10 h-[28rem] lg:h-[20rem] ${styles.secondChoiceWrapper}`}
             >
               <p
                 className={`text-center font-normal text-dark_grey pt-6 lg:text-lg pb-2 ${styles.borderBottom} `}
@@ -312,17 +312,17 @@ const GetStarted = () => {
                 Let us know where you are
               </p>
               <p className={`p-4 font-normal text-dark_grey`}>Select</p>
-              <div className={`inline-flex w-full justify-center`}>
-                <div className={`${styles.homeContainer}`}>
-                  <div className={`${styles.divider}`}>
-                    <div className={` p-2 lg:p-6 ${styles.inputField}`}>
+              <div className={`flex flex-col lg:flex-row w-full justify-center`}>
+                <div className={`w-[85%] lg:w-[45%] ${styles.homeContainer}`}>
+                  <div className={`w-[100%] lg:w-[95%] ${styles.divider}`}>
+                    <div className={`p-[1rem] lg:p-2 lg:p-6 ml-[2rem] lg:ml-0 mb-[2rem] ${styles.inputField}`}>
                       <label
                         className={`text-dark_grey font-light pl-1 lg:pl-6 mb-4`}
                       >
                         Location
                       </label>
                       <div
-                        className={`flex flex-cols lg:flex-row lg:justify-between p-2 mt-2 cursor-pointer ${styles.inputField}`}
+                        className={`flex flex-cols lg:flex-row lg:justify-between p-[1rem] lg:p-2 lg:mb-0 lg:p-2 mt-2 cursor-pointer ${styles.inputField}`}
                       >
                         <select
                           name="location"
@@ -340,13 +340,13 @@ const GetStarted = () => {
                             );
                           })}
                         </select>
-                        <img src={selectDropDownIcon} alt="select-drop-down" />
+                        <img src={selectDropDownIcon} alt="select-drop-down" className={`hidden lg:block`}/>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className={`${styles.homeContainer}`}>
-                  <div className={` p-2 lg:p-6 ${styles.inputField}`}>
+                <div className={`w-[85%] lg:w-[45%] ${styles.homeContainer}`}>
+                  <div className={`p-[1rem] lg:p-2 lg:p-6 ml-[2rem] lg:ml-0  ${styles.inputField}`}>
                     <label className={`text-dark_grey font-light pl-6 mb-4`}>
                       Frequency
                     </label>
@@ -372,7 +372,7 @@ const GetStarted = () => {
                           );
                         })}
                       </select>
-                      <img src={selectDropDownIcon} alt="select-drop-down" />
+                      <img src={selectDropDownIcon} alt="select-drop-down" className={`hidden lg:block`} />
                     </div>
                   </div>
                 </div>
@@ -420,7 +420,7 @@ const GetStarted = () => {
         <>
           <div className={``}>
             <h5
-              className={`text-center lg:text-right lg:pr-64 pt-10 text-dark_grey font-medium mt-20 text-base`}
+              className={`text-center lg:text-right lg:pr-64 pt-10 text-dark_grey font-medium lg:mt-20 text-base`}
             >
               Fields marked * are compulsory
             </h5>
@@ -537,12 +537,9 @@ const GetStarted = () => {
       {isThisForm(2) && (
         <div>
           <div>
-            <img src="./assets/left-arrow-direction" alt="left-arrow" />
-          </div>
-          <div>
             <h5
             onClick={renderPreviousForm}
-              className={`text-left lg:text-left cursor-pointer pl-[3rem] lg:pl-[30rem] pt-10 text-dark_grey font-medium mt-20 text-base`}
+              className={`text-left lg:text-left cursor-pointer pl-[3rem] lg:pl-[30rem] pt-10 text-dark_grey font-medium lg:mt-20 text-base`}
             >Back</h5>
             <div className={`mx-[2rem] lg:mx-auto mt-2  lg:mt-8 mb-8 ${styles.formContainerSummary}`}>
               <div className={`${styles.flexBox} ${styles.headerSummary}`}>

@@ -30,6 +30,10 @@
 
 
 @media screen and (max-width: 769px){
+    .residoLogo {
+        width: 45%;
+    }
+
     .nav {
         padding:20px 80px;
     }
@@ -59,7 +63,7 @@
         justify-content: flex-start;
         flex-direction: column;
         position: fixed;
-        top: 90px;
+        top: 64px;
         right: 0px;
         width: 300px;
         height:300px;
@@ -75,7 +79,7 @@
     
 
     .mobileIcons {
-        font-size: 24px;
+        font-size: 20px;
         cursor: pointer;
     }
 

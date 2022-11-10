@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import styles from './Action.module.scss';
 
@@ -10,6 +11,7 @@ const Action = () => {
         home today!
       </h2>
       <div className='text-center'>
+        <Link to='/pricing'>
           <Button
              type="filled"
              bgColor="white"
@@ -17,6 +19,7 @@ const Action = () => {
              text="Get started"
              classes="w-32 h-10 mt-[3rem] md:w-28 font-medium xl:w-36 rounded-md text-sm capitalize text-dark_blue bg-white"
           />
+        </Link>
       </div>
     </div>
   );

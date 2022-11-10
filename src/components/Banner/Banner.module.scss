@@ -20,3 +20,13 @@
     height: 20rem;
 }
 
+@media screen and (max-width: 769px){
+
+    .header {
+        font-size: 2rem;
+        line-height:4rem;
+        font-weight: 600;
+        margin-bottom: 3rem;
+    }
+ }
+
