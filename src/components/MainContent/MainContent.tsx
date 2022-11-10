@@ -15,7 +15,7 @@ import Accordion from "../shared/Accordion/Accordion";
 
 const MainContent = () => {
   return (
-    <div className={`bg-white w-full p-5 md:p-28 h-[4400px] lg:max-h-[3262px] ${styles.mainContentWrapper}`}>
+    <div className={`bg-white w-full p-5 md:p-28 h-[4500px] lg:max-h-[3262px] ${styles.mainContentWrapper}`}>
       <h2 className="text-dark_grey font-semibold text-2xl lg:text-4xl md:text-2xl mb-6 text-center mt-[3rem] lg:mt-0">
         Easy and efficient home management service at your reach
       </h2>
@@ -237,7 +237,7 @@ const MainContent = () => {
         <input
           type="text"
           placeholder="Enter your location"
-          className={`mb-[2rem] lg:float-right block ml-auto mr-auto lg:ml-[21rem] p-2 lg:p-4 pr-[6rem] lg:pr-[10rem] ${styles.input}`}
+          className={`mb-[2rem] lg:float-right block ml-auto mr-auto lg:ml-[21rem] p-2 lg:p-4 pr-[5.9rem] lg:pr-[10rem] ${styles.input}`}
         />
         <div className={`flex w-full items-center justify-end gap-[1rem]`}>
         <input
@@ -251,8 +251,7 @@ const MainContent = () => {
         <img
           src={whiteRightArrow}
           alt="white_arrow_right"
-          className={`object-none object-center text-center w-[28px] lg:w-6
-          h-[23px]  ${styles.whiteArrowRight}`}
+          className={`object-contain object-center text-center w-[13px] lg:w-[28px] h-[18px] lg:h-[23px]  ${styles.whiteArrowRight}`}
         />
         </div>
         </div>
