@@ -26,7 +26,7 @@ const Contact = () => {
           <div className={`flex flex-row items-center gap-4 mb-8 `}>
             <img src={mailIcon} alt="mail" />
             <span className="text-dark_blue font-normal text-base">
-              hello@resido.com
+              info@resido.ng
             </span>
           </div>
           <a href='https://wa.me/2349043284663' rel="noreferrer" className={`flex flex-row items-center gap-4 mb-20`} target='_blank'>

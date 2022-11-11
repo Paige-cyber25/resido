@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useState } from "react";
-import PayWithBankIcon from '../../assets/pay_with_bank.svg';
+import PayWithBankIcon from '../../assets/wema-logo.png';
 import PayStackIcon from '../../assets/paystack.svg';
 import axios from "axios";
 import useScript from '../../hooks/useScript'
@@ -100,11 +100,11 @@ const PaymentModal = ({ visible, totalAmount, userWhatsappNumber, userEmail, pay
       className="fixed inset-0 bg-black z-20 bg-opacity-25 backdrop-blur-sm flex items-center justify-center"
     >
       <div className="bg-white p-[2.5rem] lg:p-2 rounded w-[20rem] lg:w-[30rem] lg:h-[15rem]">
-        <div className='flex flex-row items-center justify-between lg:justify-evenly'>
-        <h1 className="font-bold text-[.9rem] lg:text-lg text-dark_grey pb-[1rem] lg:pb-[2rem] pt-[1rem] lg:pt-[2rem]">
+        <div className='flex flex-row items-center justify-between'>
+        <h1 className="font-bold text-[12px] lg:text-lg text-dark_grey pb-[1rem] lg:pb-[2rem] pt-[1rem] lg:pt-[2rem] ml-0 lg:ml-[2rem]">
           Select a Payment Method
         </h1>
-        <button className='text-[.9rem] lg:text-lg cursor-pointer text-[#d30000]' onClick={closePaymentModal}>Cancel</button>
+        <button className='text-[12px] lg:text-lg cursor-pointer text-[#d30000] mr-0 lg:mr-[2rem]' onClick={closePaymentModal}>Cancel</button>
         </div>
        
         {/* <a href={paystackUrl} target="_blank" rel="noreferrer" className='flex cursor-pointer items-center  lg:pl-[2rem] pb-[1rem] lg:pb-[2rem]'>
@@ -115,6 +115,16 @@ const PaymentModal = ({ visible, totalAmount, userWhatsappNumber, userEmail, pay
             <p>Pay with Paystack</p>
           </div>
         </a> */}
+        <div className="flex items-center lg:pl-[2rem] cursor-pointer mb-[1rem] lg:mb-[2rem]" onClick={payWithWema}>
+          <div>
+            <img
+              src={PayWithBankIcon}
+              alt=""
+              className=" pr-[1rem] lg:pr-[2rem]"
+            />
+          </div>
+          <p className='text-[12px] lg:text-lg text-dark_grey'>Pay with Wema</p>
+        </div>
 
         <div
           className='flex cursor-pointer items-center lg:pl-[2rem] pb-[1rem] lg:pb-[2rem]'
@@ -123,17 +133,7 @@ const PaymentModal = ({ visible, totalAmount, userWhatsappNumber, userEmail, pay
           <div className="">
             <img src={PayStackIcon} alt="" className='pr-[1rem] lg:pr-[2rem]' />
           </div>
-          <p>Pay with Paystack</p>
-        </div>
-        <div className="flex lg:pl-[2rem] cursor-pointer" onClick={payWithWema}>
-          <div>
-            <img
-              src={PayWithBankIcon}
-              alt=""
-              className=" pr-[1rem] lg:pr-[2rem]"
-            />
-          </div>
-          <p>Pay with Bank Transfer</p>
+          <p className='text-[12px] lg:text-lg text-dark_grey'>Pay with Paystack</p>
         </div>
       </div>
 

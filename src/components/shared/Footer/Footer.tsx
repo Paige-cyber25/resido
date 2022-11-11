@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className={`bg-black w-full flex items-center justify-center relative -bottom-50`}>
+    <div className={`bg-black w-full flex items-center justify-center lg:justify-evenly relative -bottom-50 hidden lg:flex`}>
       <div
         className={`flex items-center cursor-pointer ${styles.logo}`}
       >

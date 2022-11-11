@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import styles from "./MainContent.module.scss";
 import whatsappIcon from "../../assets/whatsapp.svg";
@@ -6,16 +7,62 @@ import noteIcon from "../../assets/note.svg";
 import searchMonitorIcon from "../../assets/search_monitor.svg";
 import lineChartIcon from "../../assets/line-chart.svg";
 import arrowRightIcon from "../../assets/arrow-right.svg";
-import homeServiceIcon from "../../assets/home_service.svg"
-import whiteRightArrow from "../../assets/white_arrow-right.svg";
+import homeServiceIcon from "../../assets/home_service.svg";
 import storyImage from "../../assets/story.png";
 import Button from "../shared/Button/Button";
-import { Cards } from "../shared/Cards/Cards"
+import { Cards } from "../shared/Cards/Cards";
 import Accordion from "../shared/Accordion/Accordion";
+import { toast } from "react-toastify";
+import { isValidEmail } from "../helpers/inputValidators";
 
 const MainContent = () => {
+  const initialValues = {
+    location: "",
+    email: "",
+  };
+  const [formValues, setFormValues] = useState({ ...initialValues });
+
+  const handleChange = (e) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const url = "https://resido-onboarding.herokuapp.com/notcovered";
+
+    if (
+      Object.values(formValues).includes("") ||
+      !isValidEmail(formValues.email) ||
+      formValues.location.length < 2
+    ) {
+      return;
+    }
+
+    try {
+      const res = await axios.post(url, formValues);
+
+      if(res) {
+        toast.success("Successful");
+        setFormValues({ ...initialValues });
+      }
+     
+      if (res.data.error) {
+        throw new Error(res.data.error);
+      }
+
+     
+    } catch (err: any) {
+      toast.error(err.message);
+    }
+  };
+
   return (
-    <div className={`bg-white w-full p-5 md:p-28 h-[4500px] lg:max-h-[3262px] ${styles.mainContentWrapper}`}>
+    <div
+      className={`bg-white w-full p-5 md:p-28 h-[4500px] lg:max-h-[3262px] ${styles.mainContentWrapper}`}
+    >
       <h2 className="text-dark_grey font-semibold text-2xl lg:text-4xl md:text-2xl mb-6 text-center mt-[3rem] lg:mt-0">
         Easy and efficient home management service at your reach
       </h2>
@@ -180,10 +227,10 @@ const MainContent = () => {
         >
           Frequently Asked Questions
         </h2>
-        <div className='flex items-center justify-start'>
-            <Accordion />
+        <div className="flex items-center justify-start">
+          <Accordion />
         </div>
-        
+
         {/* <div className={`flex flex-col lg:flex-row gap-10 mb-8 justify-between`}>
           <div
             className={`flex items-center md:justify-between lg:gap-80 p-5 ${styles.questionsWrapper}`}
@@ -222,7 +269,9 @@ const MainContent = () => {
         </div> */}
       </div>
       <div className={`mt-24 text-center lg:text-right`}>
-        <h2 className={`text-dark_grey font-semibold text-2xl lg:text-4xl mb-4 lg:mb-8`}>
+        <h2
+          className={`text-dark_grey font-semibold text-2xl lg:text-4xl mb-4 lg:mb-8`}
+        >
           Could use our service?
         </h2>
         <p
@@ -232,28 +281,34 @@ const MainContent = () => {
         </p>
       </div>
       <form
-        className={`mt-[3rem] lg:mt-24 lg:ml-[20rem] lg:mb-[20rem] mr-[3rem] lg:mr-0 ${styles.inputWrapper}`}
+        onSubmit={handleSubmit}
+        className={`mt-[3rem] lg:mt-24 lg:ml-[20rem] lg:mb-[20rem] mr-[3rem] lg:mr-0  ${styles.inputWrapper}`}
       >
         <input
           type="text"
+          name="location"
+          value={formValues.location}
+          onChange={handleChange}
           placeholder="Enter your location"
-          className={`mb-[2rem] lg:float-right block ml-auto mr-auto lg:ml-[21rem] p-2 lg:p-4 pr-[5.9rem] lg:pr-[10rem] ${styles.input}`}
-        />
-        <div className={`flex w-full items-center justify-end  gap-[.5rem] lg:gap-[1rem] ml-[3.2rem] lg:ml-0`}>
-        <input
-          type="text"
-          placeholder="Enter your email address"
-          className={` block p-[.8rem] lg:p-4 pr-[3rem] lg:pr-[5rem] ${styles.emailInput}`}
+          className={`mb-[2rem] lg:float-right block ml-auto mr-auto lg:ml-[21rem] p-[.8rem] lg:p-4 pr-[5.9rem] lg:pr-[10rem] ${styles.input}`}
         />
         <div
-        className={` block cursor-pointer lg:w-[4rem] lg:h-[3.3rem] p-0.5 ${styles.whiteArrowRightWrapper}`}
-      >
-        <img
-          src={whiteRightArrow}
-          alt="white_arrow_right"
-          className={`object-contain object-center text-center w-[13px] lg:w-[28px] h-[18px] lg:h-[23px]  ${styles.whiteArrowRight}`}
-        />
-        </div>
+          className={`flex w-full items-center justify-end  gap-[.5rem] lg:gap-[1rem] ml-[3.2rem] lg:ml-0 ${styles.emailBtnWrapper}`}
+        >
+          <input
+            type="email"
+            name="email"
+            value={formValues.email}
+            onChange={handleChange}
+            placeholder="Enter your email address"
+            className={` block p-[.8rem] lg:p-4 pr-[3rem] lg:pr-[5rem] ${styles.emailInput}`}
+          />
+          <button
+            type='submit'
+            className={` block cursor-pointer lg:w-[4rem] lg:h-[3.3rem] p-[.6rem] lg:p-0 ${styles.whiteArrowRightWrapper}`}
+          >
+            &gt;
+          </button>
         </div>
       </form>
     </div>

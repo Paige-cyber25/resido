@@ -236,7 +236,7 @@ const GetStarted = () => {
                       <label
                         className={`text-dark_grey font-light pl-4 lg:pl-6`}
                       >
-                        {houseTypeObject?.[0]?.name}
+                        House 7+
                       </label>
                     </div>
                   </div>
@@ -254,7 +254,7 @@ const GetStarted = () => {
                       }
                     />
                     <label className={`text-dark_grey font-light pl-4 lg:pl-6`}>
-                      {houseTypeObject?.[1]?.name}
+                      D/SD House
                     </label>
                   </div>
                 </div>
@@ -281,7 +281,7 @@ const GetStarted = () => {
                       <label
                         className={`text-dark_grey font-light pl-4 lg:pl-6`}
                       >
-                        {houseTypeObject?.[2]?.name}
+                        Townhouse
                       </label>
                     </div>
                   </div>
@@ -299,7 +299,7 @@ const GetStarted = () => {
                       }
                     />
                     <label className={`text-dark_grey font-light pl-4 lg:pl-6`}>
-                      {houseTypeObject?.[3]?.name}
+                      3+ Bed Apartment
                     </label>
                   </div>
                 </div>

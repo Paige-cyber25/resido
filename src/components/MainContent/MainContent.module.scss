@@ -60,6 +60,8 @@
 .whiteArrowRightWrapper {
     border-radius: 5px;
     background: #2AA2D2;
+    font-size: 21px;
+    color: #fff;
 
     .whiteArrowRight {
         margin: 0.8rem;
@@ -67,5 +69,46 @@
 }
 
 
+
+@media (min-width:320px)  { 
+    .whiteArrowRightWrapper {
+        padding-left: 1.2rem;
+        padding-right: 1rem;
+    }
+}
+
+
+@media (min-width:480px)  { 
+    .mainContentWrapper {
+        height: 4347px;
+    }
+    .emailBtnWrapper {
+        margin-left: -2.8rem;
+    }
+ }
+
+@media (min-width:600px)  { 
+    .emailBtnWrapper {
+        margin-left: -5.8rem !important;
+    }
+}
+@media (min-width:801px) {
+    .customerContent {
+        max-width: 31rem !important;
+    }
+    .emailBtnWrapper {
+        margin-left: -6.8rem !important;
+    }
+ }
+@media (min-width:1025px)  { 
+    .mainContentWrapper {
+        height: 4347px;
+    }
+    .emailBtnWrapper {
+        margin-left: 0px !important;
+    }
+ }
+
+ @media (min-width:1281px) { /* hi-res laptops and desktops */ }
 
 
