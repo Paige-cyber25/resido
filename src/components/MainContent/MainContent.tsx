@@ -14,6 +14,7 @@ import { Cards } from "../shared/Cards/Cards";
 import Accordion from "../shared/Accordion/Accordion";
 import { toast } from "react-toastify";
 import { isValidEmail } from "../helpers/inputValidators";
+import { Link } from "react-router-dom";
 
 const MainContent = () => {
   const initialValues = {
@@ -88,7 +89,7 @@ const MainContent = () => {
             Send us a WhatsApp message and we’ll get to work without delay
           </p>
           <a
-            href=" "
+            href="/about"
             className="flex items-center justify-center gap-2 cursor text-dark_blue font-medium"
           >
             Learn more <img src={arrowRightIcon} alt="arrow_right" />
@@ -108,7 +109,7 @@ const MainContent = () => {
             thorough inspections.
           </p>
           <a
-            href=" "
+            href="/about"
             className="flex items-center justify-center gap-2 cursor text-dark_blue font-medium"
           >
             Learn more <img src={arrowRightIcon} alt="arrow_right" />
@@ -127,7 +128,7 @@ const MainContent = () => {
             We employ the services of highly qualified specialists
           </p>
           <a
-            href=" "
+            href="/about"
             className="flex items-center justify-center gap-2 cursor text-dark_blue font-medium"
           >
             Learn more <img src={arrowRightIcon} alt="arrow_right" />
@@ -147,7 +148,7 @@ const MainContent = () => {
             expectation.
           </p>
           <a
-            href=" "
+            href="/about"
             className="flex items-center justify-center gap-2 cursor text-dark_blue font-medium"
           >
             Learn more <img src={arrowRightIcon} alt="arrow_right" />
@@ -177,6 +178,7 @@ const MainContent = () => {
             Nigeria.
           </p>
           <div className="text-left">
+            <Link to='/about'>
             <Button
               type="filled"
               bgColor="white"
@@ -184,6 +186,7 @@ const MainContent = () => {
               text="Learn more"
               classes="w-32 h-10 -mr-40  md:w-28 xl:w-36 rounded-md text-sm capitalize text-dark_grey bg-white"
             />
+            </Link>
           </div>
         </div>
       </div>

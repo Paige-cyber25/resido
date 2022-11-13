@@ -15,6 +15,7 @@ const GetStarted = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [formValues, setFormValues] = useState(null);
   const [currentFormKey, setCurrentFormKey] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [formSteps] = useState([
     { name: "housingInfo", index: 0 },
     { name: "personalInfo", index: 1 },
@@ -80,12 +81,15 @@ const GetStarted = () => {
 
   async function getHouse() {
     try {
+      setLoading(true);
       let request = axios.get(`https://resido-onboarding.herokuapp.com/house`);
       let response = (await request).data;
       if (response) {
         setHouseTypes(response.house_types);
+        setLoading(false);
       }
     } catch (error) {
+      setLoading(false);
       console.error(error);
     }
   }
@@ -236,7 +240,7 @@ const GetStarted = () => {
                       <label
                         className={`text-dark_grey font-light pl-4 lg:pl-6`}
                       >
-                        House 7+
+                        {loading ? 'Please wait ....' : houseTypeObject?.[0]?.name}
                       </label>
                     </div>
                   </div>
@@ -254,7 +258,7 @@ const GetStarted = () => {
                       }
                     />
                     <label className={`text-dark_grey font-light pl-4 lg:pl-6`}>
-                      D/SD House
+                     {loading ? 'Please wait ....' : houseTypeObject?.[1]?.name }
                     </label>
                   </div>
                 </div>
@@ -281,7 +285,7 @@ const GetStarted = () => {
                       <label
                         className={`text-dark_grey font-light pl-4 lg:pl-6`}
                       >
-                        Townhouse
+                        {loading ? 'Please wait ....' : houseTypeObject?.[2]?.name}
                       </label>
                     </div>
                   </div>
@@ -299,7 +303,7 @@ const GetStarted = () => {
                       }
                     />
                     <label className={`text-dark_grey font-light pl-4 lg:pl-6`}>
-                      3+ Bed Apartment
+                     {loading ? 'Please wait ....' : houseTypeObject?.[3]?.name}
                     </label>
                   </div>
                 </div>
